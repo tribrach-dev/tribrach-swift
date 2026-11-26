@@ -83,7 +83,7 @@ final class WireTests: XCTestCase {
             XCTAssertThrowsError(try WireValue.parse(Data(bad.utf8)), bad)
         }
         let v = WireValue.object(["b": .string("\u{2028}\"x"), "a": .number("1")])
-        XCTAssertEqual(v.text, #"{"a":1,"b":" \"x"}"#)
+        XCTAssertEqual(v.text, #"{"a":1,"b":"\u2028\"x"}"#)
         XCTAssertEqual(try WireValue.parse(v.data), v)
     }
 

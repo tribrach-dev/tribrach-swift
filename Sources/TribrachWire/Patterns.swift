@@ -15,7 +15,7 @@ public struct WirePattern: Sendable {
         WirePattern(name: "slug", regex: "^[a-z0-9][a-z0-9-]*$", check: slug),
         WirePattern(name: "upperAlnum", regex: "^[A-Z0-9]+$", check: upperAlnum),
         WirePattern(name: "ownerRepo", regex: "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$", check: ownerRepo),
-        WirePattern(name: "relPath", regex: #"^(?!/)(?!.*(^|/)\.\.(/|$))[^\\\x00-\x1f  ]+$"#, check: relPath),
+        WirePattern(name: "relPath", regex: #"^(?!/)(?!.*(^|/)\.\.(/|$))[^\\\x00-\x1f\u2028\u2029]+$"#, check: relPath),
         WirePattern(name: "uri", regex: #"^[A-Za-z][A-Za-z0-9+.-]*:[^\x00-\x20\x7f]*$"#, check: uri),
         WirePattern(name: "dateTime", regex: #"^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"#, check: dateTime),
         WirePattern(name: "instant", regex: #"^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"#, check: instant),
