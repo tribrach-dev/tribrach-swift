@@ -5,9 +5,49 @@ let package = Package(
     name: "tribrach-swift",
     platforms: [.macOS(.v13), .iOS(.v16)],
     products: [
+        .library(name: "TribrachCore", targets: ["TribrachCore"]),
         .library(name: "TribrachReplay", targets: ["TribrachReplay"]),
+        .executable(name: "tribrach-swift", targets: ["tribrach-swift"]),
+        .plugin(name: "TribrachCheck", targets: ["TribrachCheck"]),
+        .plugin(name: "TribrachStamp", targets: ["TribrachStamp"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "600.0.1"),
     ],
     targets: [
-        .target(name: "TribrachReplay"),
+        // Formats, the annotation grammar, drift and JSON equality. No dependencies.
+        .target(name: "TribrachCore"),
+        // Replay of exported vectors against a Swift implementation.
+        .target(name: "TribrachReplay", dependencies: ["TribrachCore"]),
+        // Reading Swift source: links, stamps and purity.
+        .target(
+            name: "TribrachSyntax",
+            dependencies: [
+                "TribrachCore",
+                .product(name: "SwiftSyntax", package: "swift-syntax"),
+                .product(name: "SwiftParser", package: "swift-syntax"),
+            ]
+        ),
+        .executableTarget(name: "tribrach-swift", dependencies: ["TribrachCore", "TribrachSyntax"]),
+        .plugin(
+            name: "TribrachCheck",
+            capability: .buildTool(),
+            dependencies: ["tribrach-swift"]
+        ),
+        .plugin(
+            name: "TribrachStamp",
+            capability: .command(
+                intent: .custom(verb: "tribrach-stamp", description: "Record the manifest's Lean stamps next to linked functions"),
+                permissions: [.writeToPackageDirectory(reason: "Writes //tribrach:stamp lines under //tribrach:link annotations")]
+            ),
+            dependencies: ["tribrach-swift"]
+        ),
+        .testTarget(
+            name: "TribrachCoreTests",
+            dependencies: ["TribrachCore", "TribrachReplay"],
+            exclude: ["CORE_REV"],
+            resources: [.copy("core")]
+        ),
+        .testTarget(name: "TribrachSyntaxTests", dependencies: ["TribrachSyntax", "TribrachCore"]),
     ]
 )

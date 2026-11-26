@@ -13,8 +13,32 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - name: Build
-        run: swift build
+      - name: Build and test
+        run: |
+          swift build
+          swift test
+      - name: Example (build plugin, replay, check, stamp)
+        working-directory: Examples/Counter
+        run: |
+          swift build
+          swift test
+          swift run --package-path ../.. tribrach-swift check --manifest tribrach.manifest.json Sources
+          swift run --package-path ../.. tribrach-swift stamp -n --manifest tribrach.manifest.json Sources
+
+  conformance-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the pinned core commit
+        id: core
+        run: echo "rev=$(cat Tests/TribrachCoreTests/CORE_REV)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: tribrach-dev/tribrach
+          ref: ${{ steps.core.outputs.rev }}
+          path: core
+      - name: The vendored cases match core
+        run: diff -r core/tests/conformance Tests/TribrachCoreTests/core --exclude=README.md
 
   dco:
     if: github.event_name == 'pull_request'

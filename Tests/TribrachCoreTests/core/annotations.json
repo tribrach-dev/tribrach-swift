@@ -1,0 +1,23 @@
+{
+  "format": "tribrach.conformance.annotations.v1",
+  "about": "How an instrument reads one comment line. The comment text starts right after the language's line-comment marker (// in Go and Swift). A directive is the exact text tribrach: with no space before it; anything else is an ordinary comment. Arguments are separated by runs of spaces or tabs; trailing whitespace is ignored.",
+  "cases": [
+    { "line": "//tribrach:link Counter.counterStep", "expect": { "directive": "link", "lean": "Counter.counterStep" } },
+    { "line": "//tribrach:link Counter.counterStep   ", "expect": { "directive": "link", "lean": "Counter.counterStep" } },
+    { "line": "//tribrach:link\tCounter.counterStep", "expect": { "directive": "link", "lean": "Counter.counterStep" } },
+    { "line": "//tribrach:link «weird name».step", "expect": { "directive": "link", "lean": "«weird name».step" }, "note": "Lean guillemets may hold spaces; they are part of the name." },
+    { "line": "//tribrach:pure", "expect": { "directive": "pure" } },
+    { "line": "//tribrach:stamp 0123456789abcdef", "expect": { "directive": "stamp", "stamp": "0123456789abcdef" } },
+    { "line": "// tribrach:link Counter.counterStep", "expect": null, "note": "A space after the marker makes it prose, like //go: directives." },
+    { "line": "//tribrachlink Counter.counterStep", "expect": null },
+    { "line": "//not tribrach:link at all", "expect": null },
+    { "line": "//tribrach:link", "expect": { "error": "missing-argument" } },
+    { "line": "//tribrach:link A.b C.d", "expect": { "error": "extra-argument" } },
+    { "line": "//tribrach:pure now", "expect": { "error": "extra-argument" } },
+    { "line": "//tribrach:stamp", "expect": { "error": "missing-argument" } },
+    { "line": "//tribrach:stamp 0123456789ABCDEF", "expect": { "error": "bad-stamp" } },
+    { "line": "//tribrach:stamp 0123", "expect": { "error": "bad-stamp" } },
+    { "line": "//tribrach:verify Counter.counterStep", "expect": { "error": "unknown-directive" } },
+    { "line": "//tribrach:", "expect": { "error": "unknown-directive" } }
+  ]
+}
