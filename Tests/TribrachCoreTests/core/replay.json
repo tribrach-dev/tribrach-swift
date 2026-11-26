@@ -1,0 +1,20 @@
+{
+  "format": "tribrach.conformance.replay.v1",
+  "about": "How an instrument reports a replay. The harness applies each case's ops in order from start and compares the host state with states[i] after step i (JSON equality: object key order is ignored, numbers compare by value). It stops a case at the first difference and reports the step (1-based), the operation and both states. host gives what a deliberately buggy host produced, for checking the report.",
+  "vectors": {
+    "format": "tribrach.vectors.v1",
+    "model": "counter.v1",
+    "cases": [
+      { "id": "climb-to-max", "start": 0, "ops": [ { "op": "incr" }, { "op": "incr" }, { "op": "incr" }, { "op": "incr" } ], "states": [1, 2, 3, 3] },
+      { "id": "reset", "start": 2, "ops": [ { "op": "reset" }, { "op": "incr" } ], "states": [0, 1] }
+    ]
+  },
+  "host": {
+    "climb-to-max": [1, 2, 3, 4],
+    "reset": [0, 1.0]
+  },
+  "expect": [
+    { "case": "climb-to-max", "outcome": "differs", "step": 4, "op": { "op": "incr" }, "want": 3, "got": 4 },
+    { "case": "reset", "outcome": "ok" }
+  ]
+}

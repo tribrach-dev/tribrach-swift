@@ -12,3 +12,5 @@
 - Sign off every commit (DCO, no CLA). Agents never sign off as themselves;
   they add Co-Authored-By, and the person who asked for the change signs off.
 - CI may only use GitHub-made or verified-creator actions (org policy).
+- No Swift compiler in cloud sessions: macOS CI is the compiler. Read the
+  failing job's log and fix from there.

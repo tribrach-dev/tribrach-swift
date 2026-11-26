@@ -1,0 +1,13 @@
+{
+  "format": "tribrach.vectors.v1",
+  "model": "counter.v1",
+  "cases": [
+    { "id": "climb-to-max", "start": 0,
+      "ops": [ { "op": "incr" }, { "op": "incr" }, { "op": "incr" }, { "op": "incr" } ],
+      "states": [1, 2, 3, 3] },
+    { "id": "reset-then-climb", "start": 3,
+      "ops": [ { "op": "reset" }, { "op": "incr" } ],
+      "states": [0, 1] },
+    { "id": "no-ops", "start": 2, "ops": [], "states": [] }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "format": "tribrach.conformance.drift.v1",
+  "about": "How an instrument compares the links it found in host code with the manifest. Each case gives the manifest links owned by the instrument (others are ignored) and the annotated host symbols; expect lists one outcome per finding, sorted by lean name then symbol. Outcomes: ok; drift (the host records another stamp); unstamped (the host has no stamp: warn and suggest the manifest's); unknown (the host links a Lean name the manifest doesn't have for this owner); symbol-mismatch (the Lean name is linked, but to another symbol); missing (the manifest links a symbol the host doesn't annotate).",
+  "owner": "tribrach.go",
+  "cases": [
+    {
+      "id": "all-ok",
+      "manifest": [ { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "0123456789abcdef" } ],
+      "host": [ { "symbol": "example.com/counter.Step", "lean": "Counter.counterStep", "stamp": "0123456789abcdef" } ],
+      "expect": [ { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "ok" } ]
+    },
+    {
+      "id": "lean-changed",
+      "manifest": [ { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "fedcba9876543210" } ],
+      "host": [ { "symbol": "example.com/counter.Step", "lean": "Counter.counterStep", "stamp": "0123456789abcdef" } ],
+      "expect": [ { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "drift", "want": "fedcba9876543210" } ]
+    },
+    {
+      "id": "never-stamped",
+      "manifest": [ { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "0123456789abcdef" } ],
+      "host": [ { "symbol": "example.com/counter.Step", "lean": "Counter.counterStep" } ],
+      "expect": [ { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "unstamped", "want": "0123456789abcdef" } ]
+    },
+    {
+      "id": "other-owner-ignored",
+      "manifest": [
+        { "lean": "Counter.counterStep", "owner": "tribrach.swift", "symbol": "Counter.step(_:_:)", "stamp": "0123456789abcdef" },
+        { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "0123456789abcdef" }
+      ],
+      "host": [ { "symbol": "example.com/counter.Step", "lean": "Counter.counterStep", "stamp": "0123456789abcdef" } ],
+      "expect": [ { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "ok" } ]
+    },
+    {
+      "id": "unknown-lean-name",
+      "manifest": [],
+      "host": [ { "symbol": "example.com/counter.Step", "lean": "Counter.step", "stamp": "0123456789abcdef" } ],
+      "expect": [ { "lean": "Counter.step", "symbol": "example.com/counter.Step", "outcome": "unknown" } ]
+    },
+    {
+      "id": "moved-symbol",
+      "manifest": [ { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "0123456789abcdef" } ],
+      "host": [ { "symbol": "example.com/counter.Next", "lean": "Counter.counterStep", "stamp": "0123456789abcdef" } ],
+      "expect": [
+        { "lean": "Counter.counterStep", "symbol": "example.com/counter.Next", "outcome": "symbol-mismatch", "want": "example.com/counter.Step" },
+        { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "missing" }
+      ]
+    },
+    {
+      "id": "annotation-removed",
+      "manifest": [ { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "0123456789abcdef" } ],
+      "host": [],
+      "expect": [ { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "missing" } ]
+    },
+    {
+      "id": "two-symbols-one-definition",
+      "manifest": [
+        { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "0123456789abcdef" },
+        { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter/fast.Step", "stamp": "0123456789abcdef" }
+      ],
+      "host": [
+        { "symbol": "example.com/counter.Step", "lean": "Counter.counterStep", "stamp": "0123456789abcdef" },
+        { "symbol": "example.com/counter/fast.Step", "lean": "Counter.counterStep", "stamp": "1111111111111111" }
+      ],
+      "expect": [
+        { "lean": "Counter.counterStep", "symbol": "example.com/counter.Step", "outcome": "ok" },
+        { "lean": "Counter.counterStep", "symbol": "example.com/counter/fast.Step", "outcome": "drift", "want": "0123456789abcdef" }
+      ]
+    }
+  ]
+}
