@@ -8,7 +8,7 @@ import XCTest
 let core = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
     .deletingLastPathComponent().appendingPathComponent("core")
 
-func load(_ path: String) throws -> [String: WireValue] {
+func loadCore(_ path: String) throws -> [String: WireValue] {
     guard case let .object(o) = try WireValue.parse(Data(contentsOf: core.appendingPathComponent(path))) else {
         throw WireError(schema: path, path: "", reason: "not an object")
     }
@@ -48,7 +48,7 @@ final class ParkingTests: XCTestCase {
     func testVerdicts() throws {
         var total = 0
         for (name, c) in codecs.sorted(by: { $0.key < $1.key }) {
-            let file = try load("verdicts/\(name).json")
+            let file = try loadCore("verdicts/\(name).json")
             XCTAssertEqual(file["format"], .string("tribrach.verdicts.v1"))
             for k in file["cases"]?.items ?? [] {
                 total += 1
@@ -65,7 +65,7 @@ final class ParkingTests: XCTestCase {
     /// Every message in the exchanges decodes and writes back as the same JSON.
     func testRoundTrips() throws {
         for (file, prefix) in [("payments.authorize", "payments.authorize"), ("meters.start.v1", "meters.start.v1"), ("meters.start.v2", "meters.start.v2")] {
-            let f = try load("exchanges/\(file).json")
+            let f = try loadCore("exchanges/\(file).json")
             XCTAssertEqual(f["format"], .string("tribrach.exchanges.v1"))
             for k in f["cases"]?.items ?? [] {
                 let id = k["id"]?.string ?? "?"
@@ -92,7 +92,7 @@ final class ParkingTests: XCTestCase {
     /// The client against core's v1 exchanges: for each case it can send, it
     /// sends exactly the recorded request and reads the recorded answer.
     func testClientReplaysExchanges() async throws {
-        let f = try load("exchanges/meters.start.v1.json")
+        let f = try loadCore("exchanges/meters.start.v1.json")
         var sent = 0
         for k in f["cases"]?.items ?? [] {
             let id = k["id"]?.string ?? "?"
