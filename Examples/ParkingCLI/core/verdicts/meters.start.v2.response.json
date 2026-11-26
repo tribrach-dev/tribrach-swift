@@ -1,0 +1,3397 @@
+{
+  "format": "tribrach.verdicts.v1",
+  "schema": "https://example.com/parking/schemas/meters.start.v2.response.json",
+  "cases": [
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "extra": 1,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": null,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": true,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 0,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 1,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 15,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 16,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": -15,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 2.5,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 2,
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "A1",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "abc",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "ABC123",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "500",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "0",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "-0",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "20001",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "1_000",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-11-26T19:30:00Z",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-11-26T11:30:00-08:00",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-11-26T19:30:00.5Z",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-02-30T00:00:00Z",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "started",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "queued",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "rejected",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "authorized",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "declined",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": [],
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": {},
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": null,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": true,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": 0,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": 1,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": 15,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": 16,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": -15,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": 2.5,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": 2,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "A1",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "abc",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "ABC123",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "500",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "0",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "-0",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "20001",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "1_000",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:30:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T11:30:00-08:00",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:30:00.5Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-02-30T00:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "started",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "queued",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "rejected",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "authorized",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "declined",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": [],
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": {},
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": null,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": true,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": 0,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": 1,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": 15,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": 16,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": -15,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": 2.5,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": 2,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "A1",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "abc",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "ABC123",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "500",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "0",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "-0",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "20001",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "1_000",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "2026-11-26T11:30:00-08:00",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "2026-11-26T19:30:00.5Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "2026-02-30T00:00:00Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "queued",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "rejected",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "authorized",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "declined",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": [],
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": {},
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": null,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": true,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": 0,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": 1,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": 15,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": 16,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": -15,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": 2.5,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": 2,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "A1",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "abc",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "ABC123",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "500",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "0",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "-0",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "20001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "1_000",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "2026-11-26T19:30:00Z",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "2026-11-26T11:30:00-08:00",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "2026-11-26T19:30:00.5Z",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "2026-02-30T00:00:00Z",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "started",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "queued",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "rejected",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "authorized",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "declined",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": [],
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": {},
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": null
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": true
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 0
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 1
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 15
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 16
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": -15
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 2.5
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 2
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": ""
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "A1"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "abc"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "ABC123"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "500"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "0"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "-0"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "20001"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "1_000"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T11:30:00-08:00"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00.5Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-02-30T00:00:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "started"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "queued"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "rejected"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "authorized"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "declined"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": []
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "125",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": {}
+      },
+      "accept": false
+    },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": true },
+    { "doc": { "extra": 1, "reason": "card declined", "result": "rejected" }, "accept": false },
+    { "doc": { "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined" }, "accept": false },
+    { "doc": { "reason": null, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": true, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 0, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 1, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 15, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 16, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": -15, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 2.5, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 2, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "", "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "A1", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "abc", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "ABC123", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "500", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "0", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "-0", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "20001", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "1_000", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T11:30:00-08:00", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00.5Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-02-30T00:00:00Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "started", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "queued", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "rejected", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "authorized", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "declined", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": [], "result": "rejected" }, "accept": false },
+    { "doc": { "reason": {}, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": null }, "accept": false },
+    { "doc": { "reason": "card declined", "result": true }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 0 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 1 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 16 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": -15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2.5 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "A1" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "abc" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "ABC123" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "500" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "-0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "20001" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "1_000" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00Z" }, "accept": false },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    { "doc": { "reason": "card declined", "result": "2026-02-30T00:00:00Z" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "started" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "queued" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "card declined", "result": "authorized" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": [] }, "accept": false },
+    { "doc": { "reason": "card declined", "result": {} }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": true },
+    { "doc": { "extra": 1, "reason": "card declined", "result": "rejected" }, "accept": false },
+    { "doc": { "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined" }, "accept": false },
+    { "doc": { "reason": null, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": true, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 0, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 1, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 15, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 16, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": -15, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 2.5, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 2, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "", "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "A1", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "abc", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "ABC123", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "500", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "0", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "-0", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "20001", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "1_000", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T11:30:00-08:00", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00.5Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-02-30T00:00:00Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "started", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "queued", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "rejected", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "authorized", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "declined", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": [], "result": "rejected" }, "accept": false },
+    { "doc": { "reason": {}, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": null }, "accept": false },
+    { "doc": { "reason": "card declined", "result": true }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 0 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 1 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 16 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": -15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2.5 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "A1" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "abc" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "ABC123" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "500" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "-0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "20001" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "1_000" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00Z" }, "accept": false },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    { "doc": { "reason": "card declined", "result": "2026-02-30T00:00:00Z" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "started" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "queued" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "card declined", "result": "authorized" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": [] }, "accept": false },
+    { "doc": { "reason": "card declined", "result": {} }, "accept": false },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "extra": 1,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": null,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": true,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 0,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 1,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 15,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 16,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": -15,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 2.5,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": 2,
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "A1",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "abc",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "ABC123",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "500",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "0",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "-0",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "20001",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "1_000",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-11-26T19:30:00Z",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-11-26T11:30:00-08:00",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-11-26T19:30:00.5Z",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "2026-02-30T00:00:00Z",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "started",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "queued",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "rejected",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "authorized",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "declined",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": [],
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": {},
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": null,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": true,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": 0,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": 1,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": 15,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": 16,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": -15,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": 2.5,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": 2,
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "A1",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "abc",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "ABC123",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "500",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "0",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "-0",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "20001",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "1_000",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T19:30:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T11:30:00-08:00",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T19:30:00.5Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-02-30T00:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "started",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "queued",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "rejected",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "authorized",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "declined",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": [],
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": {},
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": null,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": true,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": 0,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": 1,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": 15,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": 16,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": -15,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": 2.5,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": 2,
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "A1",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "abc",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "ABC123",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "500",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "0",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "-0",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "20001",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "1_000",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "2026-11-26T11:30:00-08:00",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "2026-11-26T19:30:00.5Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "2026-02-30T00:00:00Z",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "queued",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "rejected",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "authorized",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "declined",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": [],
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": {},
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": null,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": true,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": 0,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": 1,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": 15,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": 16,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": -15,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": 2.5,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": 2,
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "A1",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "abc",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "ABC123",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "500",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "0",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "-0",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "20001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "1_000",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "2026-11-26T19:30:00Z",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "2026-11-26T11:30:00-08:00",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "2026-11-26T19:30:00.5Z",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "2026-02-30T00:00:00Z",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "started",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "queued",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "rejected",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "authorized",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "declined",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": [],
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": {},
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": null
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": true
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 0
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 1
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 15
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 16
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": -15
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 2.5
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": 2
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": ""
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "A1"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "abc"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "ABC123"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "500"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "0"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "-0"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "20001"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "1_000"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T11:30:00-08:00"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00.5Z"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-02-30T00:00:00Z"
+      },
+      "accept": true
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "started"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "queued"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "rejected"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "authorized"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "declined"
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": []
+      },
+      "accept": false
+    },
+    {
+      "doc": {
+        "charged": "150",
+        "expiresAt": "2026-11-26T20:00:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": {}
+      },
+      "accept": false
+    },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "s-1001" }, "accept": true },
+    {
+      "doc": { "extra": 1, "position": 1, "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    { "doc": { "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "queued" }, "accept": false },
+    { "doc": { "position": null, "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": true, "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 0, "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "s-1001" }, "accept": true },
+    { "doc": { "position": 15, "result": "queued", "sessionId": "s-1001" }, "accept": true },
+    { "doc": { "position": 16, "result": "queued", "sessionId": "s-1001" }, "accept": true },
+    { "doc": { "position": -15, "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 2.5, "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 2, "result": "queued", "sessionId": "s-1001" }, "accept": true },
+    { "doc": { "position": "", "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": "A1", "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": "abc", "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    {
+      "doc": { "position": "ABC123", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    { "doc": { "position": "500", "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": "0", "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": "-0", "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    {
+      "doc": { "position": "20001", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "1_000", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "2026-11-26T19:30:00Z", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "2026-11-26T11:30:00-08:00", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "2026-11-26T19:30:00.5Z", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "2026-02-30T00:00:00Z", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "started", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "queued", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "rejected", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "authorized", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": "declined", "result": "queued", "sessionId": "s-1001" },
+      "accept": false
+    },
+    { "doc": { "position": [], "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": {}, "result": "queued", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": null, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": true, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": 0, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": 1, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": 15, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": 16, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": -15, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": 2.5, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": 2, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "A1", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "abc", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "ABC123", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "500", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "0", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "-0", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "20001", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "1_000", "sessionId": "s-1001" }, "accept": false },
+    {
+      "doc": { "position": 1, "result": "2026-11-26T19:30:00Z", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": 1, "result": "2026-11-26T11:30:00-08:00", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": 1, "result": "2026-11-26T19:30:00.5Z", "sessionId": "s-1001" },
+      "accept": false
+    },
+    {
+      "doc": { "position": 1, "result": "2026-02-30T00:00:00Z", "sessionId": "s-1001" },
+      "accept": false
+    },
+    { "doc": { "position": 1, "result": "started", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "s-1001" }, "accept": true },
+    { "doc": { "position": 1, "result": "rejected", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "authorized", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "declined", "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": [], "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": {}, "sessionId": "s-1001" }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": null }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": true }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": 0 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": 1 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": 15 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": 16 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": -15 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": 2.5 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": 2 }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "" }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "A1" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "abc" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "ABC123" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "500" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "0" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "-0" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "20001" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "1_000" }, "accept": true },
+    {
+      "doc": { "position": 1, "result": "queued", "sessionId": "2026-11-26T19:30:00Z" },
+      "accept": true
+    },
+    {
+      "doc": { "position": 1, "result": "queued", "sessionId": "2026-11-26T11:30:00-08:00" },
+      "accept": true
+    },
+    {
+      "doc": { "position": 1, "result": "queued", "sessionId": "2026-11-26T19:30:00.5Z" },
+      "accept": true
+    },
+    {
+      "doc": { "position": 1, "result": "queued", "sessionId": "2026-02-30T00:00:00Z" },
+      "accept": true
+    },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "started" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "queued" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "rejected" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "authorized" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": "declined" }, "accept": true },
+    { "doc": { "position": 1, "result": "queued", "sessionId": [] }, "accept": false },
+    { "doc": { "position": 1, "result": "queued", "sessionId": {} }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": true },
+    { "doc": { "extra": 1, "reason": "card declined", "result": "rejected" }, "accept": false },
+    { "doc": { "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined" }, "accept": false },
+    { "doc": { "reason": null, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": true, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 0, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 1, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 15, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 16, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": -15, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 2.5, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": 2, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "", "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "A1", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "abc", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "ABC123", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "500", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "0", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "-0", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "20001", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "1_000", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T11:30:00-08:00", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00.5Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "2026-02-30T00:00:00Z", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "started", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "queued", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "rejected", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "authorized", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "declined", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": [], "result": "rejected" }, "accept": false },
+    { "doc": { "reason": {}, "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": null }, "accept": false },
+    { "doc": { "reason": "card declined", "result": true }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 0 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 1 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 16 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": -15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2.5 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "A1" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "abc" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "ABC123" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "500" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "-0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "20001" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "1_000" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00Z" }, "accept": false },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    { "doc": { "reason": "card declined", "result": "2026-02-30T00:00:00Z" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "started" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "queued" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": true },
+    { "doc": { "reason": "card declined", "result": "authorized" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": [] }, "accept": false },
+    { "doc": { "reason": "card declined", "result": {} }, "accept": false }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/parking/schemas/meters.start.v2.request.json",
+  "title": "meters.start v2 request",
+  "description": "Generated from examples/dto-parking/Parking/Codecs.lean.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["zone", "plate", "minutes"],
+  "properties": {
+    "evCharging": { "type": "boolean" },
+    "minutes": {
+      "description": "Session length: 15 to 240 minutes, in steps of 15.",
+      "type": "integer",
+      "minimum": 15,
+      "maximum": 240,
+      "multipleOf": 15
+    },
+    "plate": { "type": "string", "minLength": 2, "maxLength": 8, "pattern": "^[A-Z0-9]+$" },
+    "zone": { "enum": ["A1", "B2", "C3"] }
+  }
+}

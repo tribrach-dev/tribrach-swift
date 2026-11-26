@@ -24,6 +24,27 @@ jobs:
           swift test
           swift run --package-path ../.. tribrach-swift check --manifest tribrach.manifest.json Sources
           swift run --package-path ../.. tribrach-swift stamp -n --manifest tribrach.manifest.json Sources
+      - name: Parking CLI (generate DTOs, verdicts, exchange replay)
+        working-directory: Examples/ParkingCLI
+        run: |
+          ./generate.sh
+          swift build
+          swift test
+      - name: Generated DTOs are up to date
+        run: |
+          if [ -n "$(git status --porcelain Examples/ParkingCLI)" ]; then
+            git status --porcelain Examples/ParkingCLI
+            git diff -- Examples/ParkingCLI | head -100
+            echo "TRS0401 Contracts.gen.swift is out of date with core/schemas; fix: Examples/ParkingCLI/generate.sh (the generated file is attached to this run)"
+            exit 1
+          fi
+      - name: Keep the generated DTOs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parking-contracts
+          path: Examples/ParkingCLI/Sources/ParkingContracts/Contracts.gen.swift
+          if-no-files-found: ignore
 
   conformance-copy:
     runs-on: ubuntu-latest
@@ -39,6 +60,16 @@ jobs:
           path: core
       - name: The vendored cases match core
         run: diff -r core/tests/conformance Tests/TribrachCoreTests/core --exclude=README.md
+      - name: Read the parking example's core commit
+        id: parking
+        run: echo "rev=$(cat Examples/ParkingCLI/core/CORE_REV)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: tribrach-dev/tribrach
+          ref: ${{ steps.parking.outputs.rev }}
+          path: core-parking
+      - name: The parking example's exports match core
+        run: diff -r core-parking/examples/dto-parking/exported Examples/ParkingCLI/core --exclude=CORE_REV
 
   dco:
     if: github.event_name == 'pull_request'

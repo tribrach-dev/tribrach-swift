@@ -1,0 +1,358 @@
+{
+  "format": "tribrach.verdicts.v1",
+  "schema": "https://example.com/parking/schemas/payments.authorize.request.json",
+  "cases": [
+    { "doc": { "amount": "1", "currency": "CAD", "token": "tok-test-visa" }, "accept": true },
+    {
+      "doc": { "amount": "1", "currency": "CAD", "extra": 1, "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD" }, "accept": false },
+    { "doc": { "amount": null, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": true, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 0, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 1, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 15, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 16, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": -15, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 2.5, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 2, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "", "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "A1", "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "abc", "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "ABC123", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "currency": "CAD", "token": "tok-test-visa" }, "accept": true },
+    { "doc": { "amount": "0", "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "-0", "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "20001", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1_000", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00Z", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T11:30:00-08:00", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00.5Z", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-02-30T00:00:00Z", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "started", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "queued", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "rejected", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "authorized", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "declined", "currency": "CAD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": [], "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": {}, "currency": "CAD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": null, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": true, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": 0, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": 1, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": 15, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": 16, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": -15, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": 2.5, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": 2, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "A1", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "abc", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "1", "currency": "ABC123", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": "1", "currency": "500", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "0", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "-0", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "20001", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "1_000", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "1", "currency": "2026-11-26T19:30:00Z", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "2026-11-26T11:30:00-08:00", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "2026-11-26T19:30:00.5Z", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "2026-02-30T00:00:00Z", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "started", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "queued", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "rejected", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "authorized", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "currency": "declined", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": "1", "currency": [], "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": {}, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": null }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": true }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": 0 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": 1 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": 15 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": 16 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": -15 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": 2.5 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": 2 }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "" }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "A1" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "abc" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "ABC123" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "500" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "0" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "-0" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "20001" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "1_000" }, "accept": true },
+    {
+      "doc": { "amount": "1", "currency": "CAD", "token": "2026-11-26T19:30:00Z" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "1", "currency": "CAD", "token": "2026-11-26T11:30:00-08:00" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "1", "currency": "CAD", "token": "2026-11-26T19:30:00.5Z" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "1", "currency": "CAD", "token": "2026-02-30T00:00:00Z" },
+      "accept": true
+    },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "started" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "queued" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "rejected" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": "declined" }, "accept": true },
+    { "doc": { "amount": "1", "currency": "CAD", "token": [] }, "accept": false },
+    { "doc": { "amount": "1", "currency": "CAD", "token": {} }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": "tok-test-visa" }, "accept": true },
+    {
+      "doc": { "amount": "500", "currency": "USD", "extra": 1, "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD" }, "accept": false },
+    { "doc": { "amount": null, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": true, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 0, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 1, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 15, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 16, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": -15, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 2.5, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": 2, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "", "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "A1", "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "abc", "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "ABC123", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "currency": "USD", "token": "tok-test-visa" }, "accept": true },
+    { "doc": { "amount": "0", "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "-0", "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "20001", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1_000", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00Z", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T11:30:00-08:00", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00.5Z", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-02-30T00:00:00Z", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "started", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "queued", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "rejected", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "authorized", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "declined", "currency": "USD", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": [], "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": {}, "currency": "USD", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": null, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": true, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": 0, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": 1, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": 15, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": 16, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": -15, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": 2.5, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": 2, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "A1", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "abc", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "500", "currency": "ABC123", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "currency": "500", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "0", "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "-0", "token": "tok-test-visa" }, "accept": false },
+    {
+      "doc": { "amount": "500", "currency": "20001", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "1_000", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "2026-11-26T19:30:00Z", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "2026-11-26T11:30:00-08:00", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "2026-11-26T19:30:00.5Z", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "2026-02-30T00:00:00Z", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "started", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "queued", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "rejected", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "authorized", "token": "tok-test-visa" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "currency": "declined", "token": "tok-test-visa" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "currency": [], "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": {}, "token": "tok-test-visa" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": null }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": true }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": 0 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": 1 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": 15 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": 16 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": -15 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": 2.5 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": 2 }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": "" }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": "A1" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "abc" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "ABC123" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "500" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "0" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "-0" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "20001" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "1_000" }, "accept": true },
+    {
+      "doc": { "amount": "500", "currency": "USD", "token": "2026-11-26T19:30:00Z" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "500", "currency": "USD", "token": "2026-11-26T11:30:00-08:00" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "500", "currency": "USD", "token": "2026-11-26T19:30:00.5Z" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "500", "currency": "USD", "token": "2026-02-30T00:00:00Z" },
+      "accept": true
+    },
+    { "doc": { "amount": "500", "currency": "USD", "token": "started" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "queued" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "rejected" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": "declined" }, "accept": true },
+    { "doc": { "amount": "500", "currency": "USD", "token": [] }, "accept": false },
+    { "doc": { "amount": "500", "currency": "USD", "token": {} }, "accept": false }
+  ]
+}

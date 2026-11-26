@@ -1,0 +1,66 @@
+{
+  "format": "tribrach.exchanges.v1",
+  "contract": "payments.authorize",
+  "version": 1,
+  "cases": [
+    {
+      "id": "approved",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": "500", "currency": "CAD", "token": "tok-test-visa" },
+      "status": 200,
+      "calls": [],
+      "response": { "amount": "500", "authId": "auth-77", "result": "authorized" }
+    },
+    {
+      "id": "at-the-limit",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": "20000", "currency": "USD", "token": "tok-test-visa" },
+      "status": 200,
+      "calls": [],
+      "response": { "amount": "20000", "authId": "auth-77", "result": "authorized" }
+    },
+    {
+      "id": "declined",
+      "given": { "authId": "auth-77", "card": "decline" },
+      "request": { "amount": "500", "currency": "CAD", "token": "tok-test-visa" },
+      "status": 200,
+      "calls": [],
+      "response": { "reason": "card declined", "result": "declined" }
+    },
+    {
+      "id": "over-the-limit",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": "20001", "currency": "CAD", "token": "t" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "zero",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": "0", "currency": "CAD", "token": "t" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "amount-as-number",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": 500, "currency": "CAD", "token": "t" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "underscore-digits",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": "1_000", "currency": "CAD", "token": "t" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "unknown-currency",
+      "given": { "authId": "auth-77", "card": "approve" },
+      "request": { "amount": "500", "currency": "EUR", "token": "t" },
+      "status": 400,
+      "calls": []
+    }
+  ]
+}

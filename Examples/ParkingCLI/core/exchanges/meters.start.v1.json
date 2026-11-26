@@ -1,0 +1,196 @@
+{
+  "format": "tribrach.exchanges.v1",
+  "contract": "meters.start",
+  "version": 1,
+  "cases": [
+    {
+      "id": "one-hour-in-zone-a1",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 60, "plate": "ABC123", "zone": "A1" },
+      "status": 200,
+      "calls": [
+        {
+          "contract": "payments.authorize",
+          "request": { "amount": "500", "currency": "CAD", "token": "tok-test-visa" },
+          "response": { "amount": "500", "authId": "auth-77", "result": "authorized" }
+        }
+      ],
+      "response": {
+        "charged": "500",
+        "expiresAt": "2026-11-26T20:30:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      }
+    },
+    {
+      "id": "longest-in-dearest-zone",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 240, "plate": "ABC123", "zone": "A1" },
+      "status": 200,
+      "calls": [
+        {
+          "contract": "payments.authorize",
+          "request": { "amount": "2000", "currency": "CAD", "token": "tok-test-visa" },
+          "response": { "amount": "2000", "authId": "auth-77", "result": "authorized" }
+        }
+      ],
+      "response": {
+        "charged": "2000",
+        "expiresAt": "2026-11-26T23:30:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      }
+    },
+    {
+      "id": "shortest-in-cheapest-zone",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 15, "plate": "Q7", "zone": "C3" },
+      "status": 200,
+      "calls": [
+        {
+          "contract": "payments.authorize",
+          "request": { "amount": "50", "currency": "CAD", "token": "tok-test-visa" },
+          "response": { "amount": "50", "authId": "auth-77", "result": "authorized" }
+        }
+      ],
+      "response": {
+        "charged": "50",
+        "expiresAt": "2026-11-26T19:45:00Z",
+        "result": "started",
+        "sessionId": "s-1001",
+        "startsAt": "2026-11-26T19:30:00Z"
+      }
+    },
+    {
+      "id": "card-declined",
+      "given": {
+        "authId": "auth-77",
+        "card": "decline",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 30, "plate": "XYZ9", "zone": "B2" },
+      "status": 200,
+      "calls": [
+        {
+          "contract": "payments.authorize",
+          "request": { "amount": "150", "currency": "CAD", "token": "tok-test-visa" },
+          "response": { "reason": "card declined", "result": "declined" }
+        }
+      ],
+      "response": { "reason": "card declined", "result": "rejected" }
+    },
+    {
+      "id": "zero-minutes",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 0, "plate": "ABC123", "zone": "A1" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "not-a-step-of-15",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 50, "plate": "ABC123", "zone": "A1" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "too-long",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 255, "plate": "ABC123", "zone": "A1" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "unknown-zone",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 60, "plate": "ABC123", "zone": "Z9" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "lowercase-plate",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": 60, "plate": "abc123", "zone": "A1" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "minutes-as-string",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "minutes": "60", "plate": "ABC123", "zone": "A1" },
+      "status": 400,
+      "calls": []
+    },
+    {
+      "id": "v2-field-on-v1",
+      "given": {
+        "authId": "auth-77",
+        "card": "approve",
+        "now": "2026-11-26T19:30:00Z",
+        "sessionId": "s-1001",
+        "token": "tok-test-visa"
+      },
+      "request": { "evCharging": true, "minutes": 60, "plate": "ABC123", "zone": "A1" },
+      "status": 400,
+      "calls": []
+    }
+  ]
+}
