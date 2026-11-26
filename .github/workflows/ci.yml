@@ -34,8 +34,10 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain Examples/ParkingCLI)" ]; then
             git status --porcelain Examples/ParkingCLI
-            git diff -- Examples/ParkingCLI | head -100
-            echo "TRS0401 Contracts.gen.swift is out of date with core/schemas; fix: Examples/ParkingCLI/generate.sh (the generated file is attached to this run)"
+            echo "----- BEGIN Contracts.gen.swift -----"
+            cat Examples/ParkingCLI/Sources/ParkingContracts/Contracts.gen.swift
+            echo "----- END Contracts.gen.swift -----"
+            echo "TRS0401 Contracts.gen.swift is out of date with core/schemas; fix: Examples/ParkingCLI/generate.sh (the generated file is printed above and attached to this run)"
             exit 1
           fi
       - name: Keep the generated DTOs
