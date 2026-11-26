@@ -1,0 +1,6 @@
+name = "tribrach-swift"
+kind = "instrument"
+formats = { manifest = "1", vectors = "1" }
+provides = ["link", "purity", "drift", "replay"]
+owns-links = ["tribrach.swift"]
+diagnostics = "TRS"
