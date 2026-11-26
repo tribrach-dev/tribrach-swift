@@ -36,6 +36,7 @@ func genMain(_ args: [String]) -> Never {
             }
             exit(0)
         }
+        try FileManager.default.createDirectory(atPath: base, withIntermediateDirectories: true)
         try code.write(toFile: out, atomically: true, encoding: .utf8)
         exit(0)
     } catch {
