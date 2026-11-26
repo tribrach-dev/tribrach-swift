@@ -16,7 +16,11 @@ struct TribrachCheck: BuildToolPlugin {
             work: context.pluginWorkDirectoryURL,
             name: target.name,
             files: files,
-            manifest: findManifest(from: target.directoryURL, stopAt: context.package.directoryURL))
+            // Start from the target's first source file: Target.directoryURL
+            // needs PackageDescription 6.1.
+            manifest: findManifest(
+                from: files.first?.deletingLastPathComponent() ?? context.package.directoryURL,
+                stopAt: context.package.directoryURL))
     }
 }
 
