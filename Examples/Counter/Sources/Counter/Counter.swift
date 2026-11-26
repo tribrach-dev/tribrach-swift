@@ -7,7 +7,7 @@ public enum Op: String, Sendable {
 public enum Counter {
     /// Applies one operation, never going above `max`.
     //tribrach:link Counter.counterStep
-    //tribrach:stamp d91fe8d3ff87445f
+    //tribrach:stamp c5f9ea973150248a
     public static func step(_ op: Op, in n: Int, max: Int) -> Int {
         switch op {
         case .reset: return 0

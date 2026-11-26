@@ -2,7 +2,7 @@
   "format": "tribrach.manifest.v1",
   "package": "counter",
   "links": [
-    { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "d91fe8d3ff87445f" },
-    { "lean": "Counter.counterStep", "owner": "tribrach.swift", "symbol": "Counter.step(_:in:max:)", "stamp": "d91fe8d3ff87445f" }
+    { "lean": "Counter.counterStep", "owner": "tribrach.go", "symbol": "example.com/counter.Step", "stamp": "c5f9ea973150248a" },
+    { "lean": "Counter.counterStep", "owner": "tribrach.swift", "symbol": "Counter.step(_:in:max:)", "stamp": "c5f9ea973150248a" }
   ]
 }
