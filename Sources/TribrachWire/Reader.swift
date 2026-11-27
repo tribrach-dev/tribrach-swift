@@ -119,7 +119,7 @@ public struct WireReader: Sendable {
 
     /// A whole number written as a decimal string, within bounds.
     public func decimal(_ v: WireValue, _ path: String, min: Int64? = nil, max: Int64? = nil) throws -> Int64 {
-        guard case let .string(s) = v, TribrachWire.decimal(s) else {
+        guard case let .string(s) = v, WirePattern.decimal.check(s) else {
             throw fail(path, "want a whole number as a decimal string")
         }
         guard let n = Int64(s) else { throw fail(path, "\(s) is out of range") }
@@ -130,7 +130,7 @@ public struct WireReader: Sendable {
     /// An RFC 3339 instant to the second, at any offset. Days past the end of
     /// a month roll over, as in core: 2026-02-30 is 2 March.
     public func instant(_ v: WireValue, _ path: String) throws -> Date {
-        guard case let .string(s) = v, TribrachWire.instant(s) else {
+        guard case let .string(s) = v, WirePattern.instant.check(s) else {
             throw fail(path, "want an RFC 3339 instant to the second")
         }
         let u = Array(s.utf8)

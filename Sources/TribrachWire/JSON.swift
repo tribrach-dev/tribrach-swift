@@ -65,8 +65,8 @@ public indirect enum WireValue: Equatable, Sendable {
         out += "\""
     }
 
-    /// Read one JSON document. Anything after it but whitespace is an error.
-    /// A repeated key keeps its last value.
+    /// Read one JSON document. Anything after it but whitespace is an error,
+    /// and so is an object with a repeated key, as in core.
     public static func parse(_ data: Data) throws -> WireValue {
         var p = Parser(bytes: [UInt8](data))
         p.space()
@@ -133,6 +133,7 @@ private struct Parser {
                 space()
                 try expect(":")
                 space()
+                guard out[k] == nil else { throw error("duplicate key \(WireValue.string(k).text)") }
                 out[k] = try value(depth: depth + 1)
                 space()
                 if peek == UInt8(ascii: ",") { i += 1; continue }

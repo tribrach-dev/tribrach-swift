@@ -130,6 +130,11 @@ catch an off-by-one.
 ## Conformance
 
 `Tests/TribrachCoreTests/core` is a copy of `tribrach/tests/conformance` at
-the commit in `CORE_REV`. CI checks the copy.
+the commit in `CORE_REV`. CI checks the copy. `TribrachWire` embeds core's pattern trees
+(`Sources/TribrachWire/PatternsData.swift`, written by
+`Scripts/embed-patterns.sh` from that copy) and matches them with one
+generic matcher. `WireTests` runs `patterns.json` and `wire.json`: each wire
+input is read with `WireReader` as its schema says, then written back and
+compared.
 
 Licence: Apache-2.0. Contributions: see [CONTRIBUTING.md](CONTRIBUTING.md).

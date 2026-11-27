@@ -1,69 +1,80 @@
 {
   "format": "tribrach.conformance.patterns.v1",
-  "about": "The string patterns a schema may use (Tribrach.Schema.Pat). For each one, the regex as exported into JSON Schema, and strings it must accept and reject. The Lean checker, the regex and every instrument must agree on each case. Regexes use ECMA-262 semantics: $ matches only at the very end, never before a final newline.",
+  "about": "The string patterns a schema may use (Tribrach.Schema.Pat). For each one, the pattern tree (the source of truth, from Pat.tree), the regex rendered from it into JSON Schema, and strings it must accept and reject. The Lean checker, the regex, the tree and every instrument must agree on each case. Regexes use ECMA-262 semantics: $ matches only at the very end, never before a final newline. Trees: {\"lit\": s} matches s; {\"set\": items} one character in the set, {\"notSet\": items} one character not in it, where an item is a one-character string or an inclusive [lo, hi] pair of code points; {\"seq\": [..]} each in turn; {\"alt\": [..]} any one; {\"rep\": t, \"min\": m, \"max\": n} t from m to n times (null: no limit); {\"without\": t, \"bans\": [..]} t, refusing the string when a ban holds: {\"startsWith\": s}, or {\"segment\": s, \"sep\": c} when splitting on c gives a part equal to s. A string matches when the tree can consume all of it.",
   "cases": [
     {
       "name": "hex16",
+      "tree": {"rep": {"set": [["0", "9"], ["a", "f"]]}, "min": 16, "max": 16},
       "regex": "^[0-9a-f]{16}$",
       "accept": ["c5f9ea973150248a", "0000000000000000"],
       "reject": ["", "c5f9ea973150248", "c5f9ea973150248a0", "C5F9EA973150248A", "c5f9ea97315024 a", "g5f9ea973150248a"]
     },
     {
       "name": "hex40",
+      "tree": {"rep": {"set": [["0", "9"], ["a", "f"]]}, "min": 40, "max": 40},
       "regex": "^[0-9a-f]{40}$",
       "accept": ["3f2a9c1e5b7d4a6f8e0c2b4d6f8a0c2e4b6d8f0a"],
       "reject": ["3f2a9c1", "3f2a9c1e5b7d4a6f8e0c2b4d6f8a0c2e4b6d8f0A", "3f2a9c1e5b7d4a6f8e0c2b4d6f8a0c2e4b6d8f0a1"]
     },
     {
       "name": "hex64",
+      "tree": {"rep": {"set": [["0", "9"], ["a", "f"]]}, "min": 64, "max": 64},
       "regex": "^[0-9a-f]{64}$",
       "accept": ["4698a0d6ddb651e214302e7767ce73361de8a83afb477fe304784a78f6233eed"],
       "reject": ["4698a0d6ddb651e214302e7767ce73361de8a83afb477fe304784a78f6233ee", "sha256:4698a0d6"]
     },
     {
       "name": "slug",
+      "tree": {"seq": [{"set": [["a", "z"], ["0", "9"]]}, {"rep": {"set": [["a", "z"], ["0", "9"], "-"]}, "min": 0, "max": null}]},
       "regex": "^[a-z0-9][a-z0-9-]*$",
       "accept": ["cli", "github-pr", "0", "a-", "v2-beta"],
       "reject": ["", "-cli", "Cli", "git hub", "under_score", "é"]
     },
     {
       "name": "upperAlnum",
+      "tree": {"rep": {"set": [["A", "Z"], ["0", "9"]]}, "min": 1, "max": null},
       "regex": "^[A-Z0-9]+$",
       "accept": ["ABC123", "7", "ZZ"],
       "reject": ["", "abc123", "AB-12", "AB 12", "ÄB", "Ａ"]
     },
     {
       "name": "ownerRepo",
+      "tree": {"seq": [{"rep": {"set": [["A", "Z"], ["a", "z"], ["0", "9"], "_", ".", "-"]}, "min": 1, "max": null}, {"lit": "/"}, {"rep": {"set": [["A", "Z"], ["a", "z"], ["0", "9"], "_", ".", "-"]}, "min": 1, "max": null}]},
       "regex": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
       "accept": ["example-org/todo-service", "a/b", "A.b_c/d-e.f", "./.."],
       "reject": ["", "example-org", "a/b/c", "/b", "a/", "a b/c", "a/b c"]
     },
     {
       "name": "relPath",
+      "tree": {"without": {"rep": {"notSet": ["\\", ["\u0000", "\u001f"], "\u2028", "\u2029"]}, "min": 1, "max": null}, "bans": [{"startsWith": "/"}, {"sep": "/", "segment": ".."}]},
       "regex": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[^\\\\\\x00-\\x1f\\u2028\\u2029]+$",
       "accept": ["lists/delete.go", "a", ".hidden/x", "a/..b/c", "a/b../c", "...", "a//b", "dir/", "naïve/ünïcode.swift"],
       "reject": ["", "/etc/passwd", "..", "../a", "a/..", "a/../b", "a\\b", "a\tb", "a\nb", "a\u2028b", "a\u0000b"]
     },
     {
       "name": "uri",
+      "tree": {"seq": [{"set": [["A", "Z"], ["a", "z"]]}, {"rep": {"set": [["A", "Z"], ["a", "z"], ["0", "9"], "+", ".", "-"]}, "min": 0, "max": null}, {"lit": ":"}, {"rep": {"notSet": [["\u0000", " "], "\u007f"]}, "min": 0, "max": null}]},
       "regex": "^[A-Za-z][A-Za-z0-9+.-]*:[^\\x00-\\x20\\x7f]*$",
       "accept": ["https://example.com/a?b=c#d", "mailto:someone@example.com", "urn:isbn:0451450523", "x:", "git+ssh://host/repo"],
       "reject": ["", "example.com", "1http://example.com", "://x", "https://example.com/a b", "http\u0000:x", "https://x\u007f", "ht tp://x"]
     },
     {
       "name": "dateTime",
+      "tree": {"seq": [{"rep": {"set": [["0", "9"]]}, "min": 4, "max": 4}, {"lit": "-"}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}, {"lit": "-"}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}, {"lit": "T"}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}, {"lit": ":"}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}, {"lit": ":"}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}, {"rep": {"seq": [{"lit": "."}, {"rep": {"set": [["0", "9"]]}, "min": 1, "max": null}]}, "min": 0, "max": 1}, {"alt": [{"lit": "Z"}, {"seq": [{"set": ["+", "-"]}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}, {"lit": ":"}, {"rep": {"set": [["0", "9"]]}, "min": 2, "max": 2}]}]}]},
       "regex": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$",
       "accept": ["2026-11-24T08:00:00Z", "2026-11-26T11:30:00.5-08:00", "2026-11-26T11:30:00.123456+05:30", "2026-13-40T99:99:99Z"],
       "reject": ["", "2026-11-24", "2026-11-24 08:00:00Z", "2026-11-24t08:00:00Z", "2026-11-24T08:00:00z", "2026-11-24T08:00:00", "2026-11-24T08:00:00.Z", "2026-11-24T08:00Z", "2026-11-24T08:00:00+0800", "26-11-24T08:00:00Z", "2026-11-24T08:00:00Z "]
     },
     {
       "name": "instant",
+      "tree": {"seq": [{"rep": {"set": [["0", "9"]]}, "min": 4, "max": 4}, {"lit": "-"}, {"alt": [{"seq": [{"lit": "0"}, {"set": [["1", "9"]]}]}, {"seq": [{"lit": "1"}, {"set": [["0", "2"]]}]}]}, {"lit": "-"}, {"alt": [{"seq": [{"lit": "0"}, {"set": [["1", "9"]]}]}, {"seq": [{"set": ["1", "2"]}, {"set": [["0", "9"]]}]}, {"seq": [{"lit": "3"}, {"set": ["0", "1"]}]}]}, {"lit": "T"}, {"alt": [{"seq": [{"set": ["0", "1"]}, {"set": [["0", "9"]]}]}, {"seq": [{"lit": "2"}, {"set": [["0", "3"]]}]}]}, {"lit": ":"}, {"set": [["0", "5"]]}, {"set": [["0", "9"]]}, {"lit": ":"}, {"set": [["0", "5"]]}, {"set": [["0", "9"]]}, {"alt": [{"lit": "Z"}, {"seq": [{"set": ["+", "-"]}, {"alt": [{"seq": [{"set": ["0", "1"]}, {"set": [["0", "9"]]}]}, {"seq": [{"lit": "2"}, {"set": [["0", "3"]]}]}]}, {"lit": ":"}, {"set": [["0", "5"]]}, {"set": [["0", "9"]]}]}]}]},
       "regex": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$",
       "accept": ["2026-11-26T19:30:00Z", "2026-11-26T11:30:00-08:00", "1970-01-01T00:00:00Z", "2026-02-30T00:00:00Z", "2026-12-31T23:59:59+23:59", "0001-01-01T00:00:00Z"],
       "reject": ["", "2026-11-26T19:30:00.5Z", "2026-13-01T00:00:00Z", "2026-00-01T00:00:00Z", "2026-11-00T00:00:00Z", "2026-11-32T00:00:00Z", "2026-11-26T24:00:00Z", "2026-11-26T23:60:00Z", "2026-11-26T23:59:60Z", "2026-11-26T19:30:00+24:00", "2026-11-26T19:30:00+08:60", "2026-11-26T19:30:00", "2026-11-26t19:30:00Z", "2026-11-26T19:30Z"]
     },
     {
       "name": "decimal",
+      "tree": {"alt": [{"lit": "0"}, {"seq": [{"rep": {"lit": "-"}, "min": 0, "max": 1}, {"set": [["1", "9"]]}, {"rep": {"set": [["0", "9"]]}, "min": 0, "max": null}]}]},
       "regex": "^(0|-?[1-9][0-9]*)$",
       "accept": ["0", "7", "350", "-1", "20000", "9007199254740993", "-9223372036854775808"],
       "reject": ["", "-", "-0", "00", "007", "+5", "1_000", "1,000", "3.0", "1e3", " 5", "5 ", "٣"]
