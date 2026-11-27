@@ -1,0 +1,455 @@
+{
+  "format": "tribrach.verdicts.v1",
+  "schema": "https://example.com/parking/schemas/payments.authorize.response.json",
+  "cases": [
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "authorized" }, "accept": true },
+    {
+      "doc": { "amount": "1", "authId": "auth-77", "extra": 1, "result": "authorized" },
+      "accept": false
+    },
+    { "doc": { "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77" }, "accept": false },
+    { "doc": { "amount": null, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": true, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 0, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 1, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 15, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 16, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": -15, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 2.5, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 2, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "A1", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "abc", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    {
+      "doc": { "amount": "ABC123", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "0", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "-0", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    {
+      "doc": { "amount": "20001", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1_000", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00Z", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T11:30:00-08:00", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00.5Z", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-02-30T00:00:00Z", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "started", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "queued", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "rejected", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "authorized", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "declined", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    { "doc": { "amount": [], "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": {}, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": null, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": true, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": 0, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": 1, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": 15, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": 16, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": -15, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": 2.5, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": 2, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "A1", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "abc", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "ABC123", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "500", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "0", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "-0", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "20001", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "1_000", "result": "authorized" }, "accept": true },
+    {
+      "doc": { "amount": "1", "authId": "2026-11-26T19:30:00Z", "result": "authorized" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "1", "authId": "2026-11-26T11:30:00-08:00", "result": "authorized" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "1", "authId": "2026-11-26T19:30:00.5Z", "result": "authorized" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "1", "authId": "2026-02-30T00:00:00Z", "result": "authorized" },
+      "accept": true
+    },
+    { "doc": { "amount": "1", "authId": "started", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "queued", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "rejected", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "authorized", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "declined", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": [], "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": {}, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": null }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": true }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": 0 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": 1 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": 15 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": 16 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": -15 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": 2.5 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": 2 }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "A1" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "abc" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "ABC123" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "500" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "0" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "-0" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "20001" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "1_000" }, "accept": false },
+    {
+      "doc": { "amount": "1", "authId": "auth-77", "result": "2026-11-26T19:30:00Z" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "authId": "auth-77", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "authId": "auth-77", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1", "authId": "auth-77", "result": "2026-02-30T00:00:00Z" },
+      "accept": false
+    },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "started" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "queued" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "rejected" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": "declined" }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": [] }, "accept": false },
+    { "doc": { "amount": "1", "authId": "auth-77", "result": {} }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": true },
+    { "doc": { "extra": 1, "reason": "card declined", "result": "declined" }, "accept": false },
+    { "doc": { "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined" }, "accept": false },
+    { "doc": { "reason": null, "result": "declined" }, "accept": false },
+    { "doc": { "reason": true, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 0, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 1, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 15, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 16, "result": "declined" }, "accept": false },
+    { "doc": { "reason": -15, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 2.5, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 2, "result": "declined" }, "accept": false },
+    { "doc": { "reason": "", "result": "declined" }, "accept": false },
+    { "doc": { "reason": "A1", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "abc", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "ABC123", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "500", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "0", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "-0", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "20001", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "1_000", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00Z", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T11:30:00-08:00", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00.5Z", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-02-30T00:00:00Z", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "started", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "queued", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "rejected", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "authorized", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "declined", "result": "declined" }, "accept": true },
+    { "doc": { "reason": [], "result": "declined" }, "accept": false },
+    { "doc": { "reason": {}, "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": null }, "accept": false },
+    { "doc": { "reason": "card declined", "result": true }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 0 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 1 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 16 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": -15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2.5 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "A1" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "abc" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "ABC123" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "500" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "-0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "20001" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "1_000" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00Z" }, "accept": false },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    { "doc": { "reason": "card declined", "result": "2026-02-30T00:00:00Z" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "started" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "queued" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "authorized" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "card declined", "result": [] }, "accept": false },
+    { "doc": { "reason": "card declined", "result": {} }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "authorized" }, "accept": true },
+    {
+      "doc": { "amount": "500", "authId": "auth-77", "extra": 1, "result": "authorized" },
+      "accept": false
+    },
+    { "doc": { "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77" }, "accept": false },
+    { "doc": { "amount": null, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": true, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 0, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 1, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 15, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 16, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": -15, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 2.5, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": 2, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "A1", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "abc", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    {
+      "doc": { "amount": "ABC123", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "0", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "-0", "authId": "auth-77", "result": "authorized" }, "accept": false },
+    {
+      "doc": { "amount": "20001", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "1_000", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00Z", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T11:30:00-08:00", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-11-26T19:30:00.5Z", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "2026-02-30T00:00:00Z", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "started", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "queued", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "rejected", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "authorized", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "declined", "authId": "auth-77", "result": "authorized" },
+      "accept": false
+    },
+    { "doc": { "amount": [], "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": {}, "authId": "auth-77", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": null, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": true, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": 0, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": 1, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": 15, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": 16, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": -15, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": 2.5, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": 2, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "", "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "A1", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "abc", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "ABC123", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "500", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "0", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "-0", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "20001", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "1_000", "result": "authorized" }, "accept": true },
+    {
+      "doc": { "amount": "500", "authId": "2026-11-26T19:30:00Z", "result": "authorized" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "500", "authId": "2026-11-26T11:30:00-08:00", "result": "authorized" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "500", "authId": "2026-11-26T19:30:00.5Z", "result": "authorized" },
+      "accept": true
+    },
+    {
+      "doc": { "amount": "500", "authId": "2026-02-30T00:00:00Z", "result": "authorized" },
+      "accept": true
+    },
+    { "doc": { "amount": "500", "authId": "started", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "queued", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "rejected", "result": "authorized" }, "accept": true },
+    {
+      "doc": { "amount": "500", "authId": "authorized", "result": "authorized" },
+      "accept": true
+    },
+    { "doc": { "amount": "500", "authId": "declined", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": [], "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": {}, "result": "authorized" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": null }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": true }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": 0 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": 1 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": 15 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": 16 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": -15 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": 2.5 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": 2 }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "A1" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "abc" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "ABC123" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "500" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "0" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "-0" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "20001" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "1_000" }, "accept": false },
+    {
+      "doc": { "amount": "500", "authId": "auth-77", "result": "2026-11-26T19:30:00Z" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "authId": "auth-77", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "authId": "auth-77", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    {
+      "doc": { "amount": "500", "authId": "auth-77", "result": "2026-02-30T00:00:00Z" },
+      "accept": false
+    },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "started" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "queued" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "rejected" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "authorized" }, "accept": true },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": "declined" }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": [] }, "accept": false },
+    { "doc": { "amount": "500", "authId": "auth-77", "result": {} }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": true },
+    { "doc": { "extra": 1, "reason": "card declined", "result": "declined" }, "accept": false },
+    { "doc": { "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined" }, "accept": false },
+    { "doc": { "reason": null, "result": "declined" }, "accept": false },
+    { "doc": { "reason": true, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 0, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 1, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 15, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 16, "result": "declined" }, "accept": false },
+    { "doc": { "reason": -15, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 2.5, "result": "declined" }, "accept": false },
+    { "doc": { "reason": 2, "result": "declined" }, "accept": false },
+    { "doc": { "reason": "", "result": "declined" }, "accept": false },
+    { "doc": { "reason": "A1", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "abc", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "ABC123", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "500", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "0", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "-0", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "20001", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "1_000", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00Z", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T11:30:00-08:00", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-11-26T19:30:00.5Z", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "2026-02-30T00:00:00Z", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "started", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "queued", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "rejected", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "authorized", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "declined", "result": "declined" }, "accept": true },
+    { "doc": { "reason": [], "result": "declined" }, "accept": false },
+    { "doc": { "reason": {}, "result": "declined" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": null }, "accept": false },
+    { "doc": { "reason": "card declined", "result": true }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 0 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 1 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 16 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": -15 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2.5 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": 2 }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "A1" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "abc" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "ABC123" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "500" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "-0" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "20001" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "1_000" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00Z" }, "accept": false },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "reason": "card declined", "result": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    { "doc": { "reason": "card declined", "result": "2026-02-30T00:00:00Z" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "started" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "queued" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "rejected" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "authorized" }, "accept": false },
+    { "doc": { "reason": "card declined", "result": "declined" }, "accept": true },
+    { "doc": { "reason": "card declined", "result": [] }, "accept": false },
+    { "doc": { "reason": "card declined", "result": {} }, "accept": false }
+  ]
+}

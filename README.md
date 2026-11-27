@@ -75,6 +75,31 @@ Purity is checked from the syntax alone, so it matches names. The lists
 cover the usual Foundation entry points. `--allow` silences a code or a
 name, and each message gives the reason in the model's terms.
 
+
+## Generate DTOs: `tribrach-swift gen`
+
+```sh
+swift run tribrach-swift gen -o Contracts.gen.swift \
+  StartRequest=schemas/meters.start.v1.request.json ...
+```
+
+Writes Swift types with `decode(_:)` and `encode()` for each JSON Schema
+core exported with `Tribrach.Schema`. Decoders read JSON as core's Lean
+decoders do (`TribrachWire`): closed objects, numbers read exactly, money as
+decimal strings into `Int64`, RFC 3339 instants into `Date`, and tagged
+unions as enums. Encoders throw rather than write what their own schema
+would reject. `-n` checks the file is up to date. Anything outside the
+subset core emits is an error, never a guess.
+
+| Code | Meaning |
+| --- | --- |
+| TRS0401 | A generated file is out of date with its schemas |
+| TRS0402 | A schema uses something the generator doesn't support |
+| TRS0403 | A pattern isn't one of core's (`Tribrach.Schema.Pat`) |
+
+`Examples/ParkingCLI` checks the generated decoders against verdicts from
+Lean and replays the exchanges core recorded from its model.
+
 ## Stamp deliberately
 
 ```sh

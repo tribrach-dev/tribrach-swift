@@ -1,15 +1,19 @@
 import Foundation
 import TribrachCore
+import TribrachGen
 import TribrachSyntax
 
 let usage = """
 usage:
   tribrach-swift check [--manifest PATH] [--allow CODES,NAMES] [--no-missing] [--touch FILE] PATHS...
   tribrach-swift stamp [--manifest PATH] [-n] PATHS...
+  tribrach-swift gen -o FILE.swift [-n] Name=schema.json...
 
 check  reports links, purity and drift; exit 1 on any error.
 stamp  records the manifest's stamps under each //tribrach:link; with -n it
        lists stale stamps and exits 1 if there are any.
+gen    writes Swift DTOs from JSON Schemas core exported; with -n it writes
+       nothing and exits 1 if FILE is out of date.
 """
 
 func fail(_ message: String) -> Never {
@@ -18,6 +22,7 @@ func fail(_ message: String) -> Never {
 }
 
 var args = Array(CommandLine.arguments.dropFirst())
+if args.first == "gen" { genMain(Array(args.dropFirst())) }
 guard let command = args.first, ["check", "stamp"].contains(command) else { fail(usage) }
 args.removeFirst()
 

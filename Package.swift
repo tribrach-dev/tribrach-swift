@@ -7,6 +7,7 @@ let package = Package(
     products: [
         .library(name: "TribrachCore", targets: ["TribrachCore"]),
         .library(name: "TribrachReplay", targets: ["TribrachReplay"]),
+        .library(name: "TribrachWire", targets: ["TribrachWire"]),
         .executable(name: "tribrach-swift", targets: ["tribrach-swift"]),
         .plugin(name: "TribrachCheck", targets: ["TribrachCheck"]),
         .plugin(name: "TribrachStamp", targets: ["TribrachStamp"]),
@@ -17,6 +18,11 @@ let package = Package(
     targets: [
         // Formats, the annotation grammar, drift and JSON equality. No dependencies.
         .target(name: "TribrachCore"),
+        // The runtime for generated DTOs: reads JSON as core's Lean decoders do.
+        // No dependencies.
+        .target(name: "TribrachWire"),
+        // Swift DTOs from the JSON Schemas core exports.
+        .target(name: "TribrachGen", dependencies: ["TribrachWire"]),
         // Replay of exported vectors against a Swift implementation.
         .target(name: "TribrachReplay", dependencies: ["TribrachCore"]),
         // Reading Swift source: links, stamps and purity.
@@ -28,7 +34,7 @@ let package = Package(
                 .product(name: "SwiftParser", package: "swift-syntax"),
             ]
         ),
-        .executableTarget(name: "tribrach-swift", dependencies: ["TribrachCore", "TribrachSyntax"]),
+        .executableTarget(name: "tribrach-swift", dependencies: ["TribrachCore", "TribrachSyntax", "TribrachGen"]),
         .plugin(
             name: "TribrachCheck",
             capability: .buildTool(),
@@ -44,7 +50,7 @@ let package = Package(
         ),
         .testTarget(
             name: "TribrachCoreTests",
-            dependencies: ["TribrachCore", "TribrachReplay"],
+            dependencies: ["TribrachCore", "TribrachReplay", "TribrachWire", "TribrachGen"],
             exclude: ["CORE_REV"],
             resources: [.copy("core")]
         ),

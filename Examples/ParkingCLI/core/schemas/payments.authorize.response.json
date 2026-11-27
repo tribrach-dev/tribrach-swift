@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/parking/schemas/payments.authorize.response.json",
+  "title": "payments.authorize response",
+  "description": "Generated from examples/dto-parking/Parking/Codecs.lean.",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result", "authId", "amount"],
+      "properties": {
+        "amount": {
+          "description": "Minor units (cents), as a decimal string.",
+          "type": "string",
+          "pattern": "^(0|-?[1-9][0-9]*)$",
+          "x-tribrach": { "minimum": 1, "maximum": 20000 }
+        },
+        "authId": { "type": "string", "minLength": 1 },
+        "result": { "const": "authorized" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result", "reason"],
+      "properties": { "reason": { "type": "string", "minLength": 1 }, "result": { "const": "declined" } }
+    }
+  ]
+}

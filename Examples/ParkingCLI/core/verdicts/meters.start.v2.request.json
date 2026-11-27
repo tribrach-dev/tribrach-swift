@@ -1,0 +1,970 @@
+{
+  "format": "tribrach.verdicts.v1",
+  "schema": "https://example.com/parking/schemas/meters.start.v2.request.json",
+  "cases": [
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "A1" }, "accept": true },
+    { "doc": { "extra": 1, "minutes": 15, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB" }, "accept": false },
+    { "doc": { "minutes": null, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": true, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 0, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 1, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "A1" }, "accept": true },
+    { "doc": { "minutes": 16, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": -15, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 2.5, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 2, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "A1", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "abc", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "ABC123", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "500", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "0", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "-0", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "20001", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "1_000", "plate": "AB", "zone": "A1" }, "accept": false },
+    {
+      "doc": { "minutes": "2026-11-26T19:30:00Z", "plate": "AB", "zone": "A1" },
+      "accept": false
+    },
+    {
+      "doc": { "minutes": "2026-11-26T11:30:00-08:00", "plate": "AB", "zone": "A1" },
+      "accept": false
+    },
+    {
+      "doc": { "minutes": "2026-11-26T19:30:00.5Z", "plate": "AB", "zone": "A1" },
+      "accept": false
+    },
+    {
+      "doc": { "minutes": "2026-02-30T00:00:00Z", "plate": "AB", "zone": "A1" },
+      "accept": false
+    },
+    { "doc": { "minutes": "started", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "queued", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "rejected", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "authorized", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": "declined", "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": [], "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": {}, "plate": "AB", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": null, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": true, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": 0, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": 1, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": 15, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": 16, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": -15, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": 2.5, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": 2, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "A1", "zone": "A1" }, "accept": true },
+    { "doc": { "minutes": 15, "plate": "abc", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "ABC123", "zone": "A1" }, "accept": true },
+    { "doc": { "minutes": 15, "plate": "500", "zone": "A1" }, "accept": true },
+    { "doc": { "minutes": 15, "plate": "0", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "-0", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "20001", "zone": "A1" }, "accept": true },
+    { "doc": { "minutes": 15, "plate": "1_000", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "2026-11-26T19:30:00Z", "zone": "A1" }, "accept": false },
+    {
+      "doc": { "minutes": 15, "plate": "2026-11-26T11:30:00-08:00", "zone": "A1" },
+      "accept": false
+    },
+    {
+      "doc": { "minutes": 15, "plate": "2026-11-26T19:30:00.5Z", "zone": "A1" },
+      "accept": false
+    },
+    { "doc": { "minutes": 15, "plate": "2026-02-30T00:00:00Z", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "started", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "queued", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "rejected", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "authorized", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "declined", "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": [], "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": {}, "zone": "A1" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": null }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": true }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": 0 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": 1 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": 15 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": 16 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": -15 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": 2.5 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": 2 }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "A1" }, "accept": true },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "abc" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "ABC123" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "500" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "0" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "-0" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "20001" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "1_000" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "2026-11-26T19:30:00Z" }, "accept": false },
+    {
+      "doc": { "minutes": 15, "plate": "AB", "zone": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "minutes": 15, "plate": "AB", "zone": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "2026-02-30T00:00:00Z" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "started" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "queued" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "rejected" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "authorized" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "declined" }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": [] }, "accept": false },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": {} }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "extra": 1, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": true },
+    { "doc": { "evCharging": true, "plate": "AB", "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB" }, "accept": false },
+    {
+      "doc": { "evCharging": null, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": true
+    },
+    { "doc": { "evCharging": 0, "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": 1, "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": 15, "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": 16, "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    {
+      "doc": { "evCharging": -15, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": 2.5, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    { "doc": { "evCharging": 2, "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": "", "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    {
+      "doc": { "evCharging": "A1", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "abc", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "ABC123", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "500", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "0", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "-0", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "20001", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "1_000", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-11-26T19:30:00Z", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-11-26T11:30:00-08:00", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-11-26T19:30:00.5Z", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-02-30T00:00:00Z", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "started", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "queued", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "rejected", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "authorized", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "declined", "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    { "doc": { "evCharging": [], "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": {}, "minutes": 15, "plate": "AB", "zone": "B2" }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": null, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": true, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 0, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 1, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "B2" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 16, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": -15, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 2.5, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 2, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "A1", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "abc", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "ABC123", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "500", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "0", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "-0", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "20001", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "1_000", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "2026-11-26T19:30:00Z", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": {
+        "evCharging": true,
+        "minutes": "2026-11-26T11:30:00-08:00",
+        "plate": "AB",
+        "zone": "B2"
+      },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "2026-11-26T19:30:00.5Z", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "2026-02-30T00:00:00Z", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "started", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "queued", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "rejected", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "authorized", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": "declined", "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": [], "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": {}, "plate": "AB", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": null, "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": true, "zone": "B2" },
+      "accept": false
+    },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": 0, "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": 1, "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": 15, "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": 16, "zone": "B2" }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": -15, "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": 2.5, "zone": "B2" },
+      "accept": false
+    },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": 2, "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "", "zone": "B2" }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "A1", "zone": "B2" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "abc", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "ABC123", "zone": "B2" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "500", "zone": "B2" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "0", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "-0", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "20001", "zone": "B2" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "1_000", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "2026-11-26T19:30:00Z", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "2026-11-26T11:30:00-08:00", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "2026-11-26T19:30:00.5Z", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "2026-02-30T00:00:00Z", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "started", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "queued", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "rejected", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "authorized", "zone": "B2" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "declined", "zone": "B2" },
+      "accept": false
+    },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": [], "zone": "B2" }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": {}, "zone": "B2" }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": null },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": true },
+      "accept": false
+    },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": 0 }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": 1 }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": 15 }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": 16 }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": -15 },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": 2.5 },
+      "accept": false
+    },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": 2 }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "" }, "accept": false },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "A1" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "abc" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "ABC123" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "500" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "0" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "-0" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "20001" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "1_000" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "2026-11-26T19:30:00Z" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "2026-02-30T00:00:00Z" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "started" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "queued" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "rejected" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "declined" },
+      "accept": false
+    },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": [] }, "accept": false },
+    { "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": {} }, "accept": false },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "extra": 1, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    { "doc": { "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": true },
+    { "doc": { "evCharging": false, "plate": "AB", "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": false, "minutes": 15, "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": "AB" }, "accept": false },
+    {
+      "doc": { "evCharging": null, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": true, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": true
+    },
+    { "doc": { "evCharging": 0, "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": 1, "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": 15, "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": 16, "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    {
+      "doc": { "evCharging": -15, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": 2.5, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    { "doc": { "evCharging": 2, "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": "", "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    {
+      "doc": { "evCharging": "A1", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "abc", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "ABC123", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "500", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "0", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "-0", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "20001", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "1_000", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-11-26T19:30:00Z", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-11-26T11:30:00-08:00", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-11-26T19:30:00.5Z", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "2026-02-30T00:00:00Z", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "started", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "queued", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "rejected", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "authorized", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": "declined", "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    { "doc": { "evCharging": [], "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": {}, "minutes": 15, "plate": "AB", "zone": "C3" }, "accept": false },
+    {
+      "doc": { "evCharging": false, "minutes": null, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": true, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 0, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 1, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "C3" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 16, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": -15, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 2.5, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 2, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "A1", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "abc", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "ABC123", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "500", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "0", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "-0", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "20001", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "1_000", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "2026-11-26T19:30:00Z", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": {
+        "evCharging": false,
+        "minutes": "2026-11-26T11:30:00-08:00",
+        "plate": "AB",
+        "zone": "C3"
+      },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "2026-11-26T19:30:00.5Z", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "2026-02-30T00:00:00Z", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "started", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "queued", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "rejected", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "authorized", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": "declined", "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": [], "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": {}, "plate": "AB", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": null, "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": true, "zone": "C3" },
+      "accept": false
+    },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": 0, "zone": "C3" }, "accept": false },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": 1, "zone": "C3" }, "accept": false },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": 15, "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": 16, "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": -15, "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": 2.5, "zone": "C3" },
+      "accept": false
+    },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": 2, "zone": "C3" }, "accept": false },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "A1", "zone": "C3" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "abc", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "ABC123", "zone": "C3" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "500", "zone": "C3" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "0", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "-0", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "20001", "zone": "C3" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "1_000", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "2026-11-26T19:30:00Z", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "2026-11-26T11:30:00-08:00", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "2026-11-26T19:30:00.5Z", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "2026-02-30T00:00:00Z", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "started", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "queued", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "rejected", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "authorized", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "declined", "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": [], "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": {}, "zone": "C3" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": null },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": true },
+      "accept": false
+    },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": 0 }, "accept": false },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": 1 }, "accept": false },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": 15 },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": 16 },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": -15 },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": 2.5 },
+      "accept": false
+    },
+    { "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": 2 }, "accept": false },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "A1" },
+      "accept": true
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "abc" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "ABC123" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "500" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "0" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "-0" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "20001" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "1_000" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "2026-11-26T19:30:00Z" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "2026-11-26T11:30:00-08:00" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "2026-11-26T19:30:00.5Z" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "2026-02-30T00:00:00Z" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "started" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "queued" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "rejected" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "authorized" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": "declined" },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": [] },
+      "accept": false
+    },
+    {
+      "doc": { "evCharging": false, "minutes": 15, "plate": "AB", "zone": {} },
+      "accept": false
+    }
+  ]
+}
