@@ -1,96 +1,165 @@
 {
   "format": "tribrach.conformance.wire.v1",
-  "about": "How each wire primitive reads and writes JSON (Tribrach.Wire). Each case has a JSON Schema as core exports it, an input as JSON text, and either output, the JSON the codec writes after reading the input, or error: true when reading fails. Instruments parse the input with their own JSON parser, read it as the schema says, write it back and compare with output by the JSON equality of replay.json. Reading fails on text that isn't one JSON value (trailing data, a trailing comma, NaN) and on an object with a duplicated key. Whole numbers may be written 2.0 or 1e2 and are written back plainly; instants are written back in UTC, and an instant whose day doesn't exist in its month (30 February, 29 February outside leap years) fails. Cases stay within signed 64-bit integers.",
+  "about": "How each wire primitive reads and writes JSON (Tribrach.Wire). Each case has a JSON Schema as core exports it, an input as JSON text, and either output, the JSON the codec writes after reading the input, or error: true when reading fails. Instruments parse the input with their own JSON parser, read it as the schema says, write it back and compare with output by the JSON equality of replay.json. Reading fails on text that isn't one JSON value (trailing data, a trailing comma, NaN) and on an object with a duplicated key. Whole numbers may be written 2.0 or 1e2 and are written back plainly; instants are written back in UTC, and an instant whose day doesn't exist in its month (30 February, 29 February outside leap years) fails. Whole numbers, as JSON numbers or decimal strings, are signed 64-bit: anything outside fails.",
   "cases": [
     { "id": "bool.true", "schema": { "type": "boolean" }, "input": "true", "output": true },
     { "id": "bool.false", "schema": { "type": "boolean" }, "input": "false", "output": false },
     { "id": "bool.string", "schema": { "type": "boolean" }, "input": "\"true\"", "error": true },
     { "id": "bool.number", "schema": { "type": "boolean" }, "input": "1", "error": true },
     { "id": "bool.null", "schema": { "type": "boolean" }, "input": "null", "error": true },
-    { "id": "int.zero", "schema": { "type": "integer" }, "input": "0", "output": 0 },
-    { "id": "int.negative", "schema": { "type": "integer" }, "input": "-12", "output": -12 },
-    { "id": "int.whole-fraction", "schema": { "type": "integer" }, "input": "2.0", "output": 2 },
-    { "id": "int.exponent", "schema": { "type": "integer" }, "input": "1e2", "output": 100 },
-    { "id": "int.negative-zero", "schema": { "type": "integer" }, "input": "-0", "output": 0 },
-    { "id": "int.fraction", "schema": { "type": "integer" }, "input": "2.5", "error": true },
+    {
+      "id": "int.zero",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "0",
+      "output": 0
+    },
+    {
+      "id": "int.negative",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "-12",
+      "output": -12
+    },
+    {
+      "id": "int.whole-fraction",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "2.0",
+      "output": 2
+    },
+    {
+      "id": "int.exponent",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "1e2",
+      "output": 100
+    },
+    {
+      "id": "int.negative-zero",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "-0",
+      "output": 0
+    },
+    {
+      "id": "int.fraction",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "2.5",
+      "error": true
+    },
     {
       "id": "int.small-exponent",
-      "schema": { "type": "integer" },
+      "schema": { "format": "int64", "type": "integer" },
       "input": "25e-1",
       "error": true
     },
     {
       "id": "int.int64-max",
-      "schema": { "type": "integer" },
+      "schema": { "format": "int64", "type": "integer" },
       "input": "9223372036854775807",
       "output": 9223372036854775807
     },
     {
       "id": "int.int64-min",
-      "schema": { "type": "integer" },
+      "schema": { "format": "int64", "type": "integer" },
       "input": "-9223372036854775808",
       "output": -9223372036854775808
     },
     {
+      "id": "int.above-int64",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "9223372036854775808",
+      "error": true
+    },
+    {
+      "id": "int.below-int64",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "-9223372036854775809",
+      "error": true
+    },
+    {
+      "id": "int.above-int64-as-exponent",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "1e19",
+      "error": true
+    },
+    {
+      "id": "int.huge",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "1e400",
+      "error": true
+    },
+    {
       "id": "int.beyond-double",
-      "schema": { "type": "integer" },
+      "schema": { "format": "int64", "type": "integer" },
       "input": "9007199254740993",
       "output": 9007199254740993
     },
-    { "id": "int.string", "schema": { "type": "integer" }, "input": "\"1\"", "error": true },
-    { "id": "int.bool", "schema": { "type": "integer" }, "input": "true", "error": true },
-    { "id": "int.null", "schema": { "type": "integer" }, "input": "null", "error": true },
+    {
+      "id": "int.string",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "\"1\"",
+      "error": true
+    },
+    {
+      "id": "int.bool",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "true",
+      "error": true
+    },
+    {
+      "id": "int.null",
+      "schema": { "format": "int64", "type": "integer" },
+      "input": "null",
+      "error": true
+    },
     {
       "id": "int-bounded.min",
-      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "schema": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 },
       "input": "0",
       "output": 0
     },
     {
       "id": "int-bounded.max",
-      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "schema": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 },
       "input": "9",
       "output": 9
     },
     {
       "id": "int-bounded.below",
-      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "schema": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 },
       "input": "-1",
       "error": true
     },
     {
       "id": "int-bounded.above",
-      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "schema": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 },
       "input": "10",
       "error": true
     },
     {
       "id": "int-bounded.max-as-fraction",
-      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "schema": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 },
       "input": "9.0",
       "output": 9
     },
     {
       "id": "int-multiple.multiple",
-      "schema": { "type": "integer", "multipleOf": 15 },
+      "schema": { "format": "int64", "type": "integer", "multipleOf": 15 },
       "input": "45",
       "output": 45
     },
     {
       "id": "int-multiple.zero",
-      "schema": { "type": "integer", "multipleOf": 15 },
+      "schema": { "format": "int64", "type": "integer", "multipleOf": 15 },
       "input": "0",
       "output": 0
     },
     {
       "id": "int-multiple.negative-multiple",
-      "schema": { "type": "integer", "multipleOf": 15 },
+      "schema": { "format": "int64", "type": "integer", "multipleOf": 15 },
       "input": "-30",
       "output": -30
     },
     {
       "id": "int-multiple.not-multiple",
-      "schema": { "type": "integer", "multipleOf": 15 },
+      "schema": { "format": "int64", "type": "integer", "multipleOf": 15 },
       "input": "50",
       "error": true
     },
@@ -231,6 +300,24 @@
       "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
       "input": "\"9223372036854775807\"",
       "output": "9223372036854775807"
+    },
+    {
+      "id": "decimal.int64-min",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"-9223372036854775808\"",
+      "output": "-9223372036854775808"
+    },
+    {
+      "id": "decimal.above-int64",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"9223372036854775808\"",
+      "error": true
+    },
+    {
+      "id": "decimal.below-int64",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"-9223372036854775809\"",
+      "error": true
     },
     {
       "id": "decimal.negative-zero",
@@ -568,37 +655,67 @@
     },
     {
       "id": "array.one",
-      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "schema": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "format": "int64", "type": "integer" }
+      },
       "input": "[1]",
       "output": [1]
     },
     {
       "id": "array.two",
-      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "schema": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "format": "int64", "type": "integer" }
+      },
       "input": "[1, 2.0]",
       "output": [1, 2]
     },
     {
       "id": "array.empty",
-      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "schema": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "format": "int64", "type": "integer" }
+      },
       "input": "[]",
       "error": true
     },
     {
       "id": "array.three",
-      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "schema": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "format": "int64", "type": "integer" }
+      },
       "input": "[1, 2, 3]",
       "error": true
     },
     {
       "id": "array.wrong-item",
-      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "schema": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "format": "int64", "type": "integer" }
+      },
       "input": "[1, \"2\"]",
       "error": true
     },
     {
       "id": "array.not-array",
-      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "schema": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": { "format": "int64", "type": "integer" }
+      },
       "input": "1",
       "error": true
     },
@@ -610,7 +727,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1}",
@@ -624,7 +741,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1, \"label\": \"a\"}",
@@ -638,7 +755,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"label\": \"a\", \"x\": 1}",
@@ -652,7 +769,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 3.0}",
@@ -666,7 +783,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"label\": \"a\"}",
@@ -680,7 +797,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1, \"y\": 2}",
@@ -694,7 +811,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1, \"label\": null}",
@@ -708,7 +825,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 10}",
@@ -722,7 +839,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1, \"x\": 2}",
@@ -736,7 +853,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "[]",
@@ -750,7 +867,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "null",
@@ -770,7 +887,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -791,7 +908,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -812,7 +929,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -833,7 +950,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -854,7 +971,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -875,7 +992,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -896,7 +1013,7 @@
             "type": "object",
             "additionalProperties": false,
             "required": ["kind", "w"],
-            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+            "properties": { "kind": { "const": "box" }, "w": { "format": "int64", "type": "integer" } }
           }
         ]
       },
@@ -1006,7 +1123,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": " \n\u0009{ \"x\" : 1 } \n",
@@ -1020,7 +1137,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1,}",
@@ -1034,7 +1151,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1} {}",
@@ -1048,7 +1165,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{'x': 1}",
@@ -1062,7 +1179,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "",
@@ -1076,7 +1193,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": +1}",
@@ -1090,7 +1207,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 01}",
@@ -1104,7 +1221,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": 1.}",
@@ -1118,7 +1235,7 @@
         "required": ["x"],
         "properties": {
           "label": { "type": "string" },
-          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+          "x": { "format": "int64", "type": "integer", "minimum": 0, "maximum": 9 }
         }
       },
       "input": "{\"x\": NaN}",

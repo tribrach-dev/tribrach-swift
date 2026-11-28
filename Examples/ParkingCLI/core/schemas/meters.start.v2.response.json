@@ -34,7 +34,7 @@
       "additionalProperties": false,
       "required": ["result", "sessionId", "position"],
       "properties": {
-        "position": { "type": "integer", "minimum": 1 },
+        "position": { "type": "integer", "minimum": 1, "format": "int64" },
         "result": { "const": "queued" },
         "sessionId": { "type": "string", "minLength": 1, "maxLength": 64 }
       }
