@@ -41,8 +41,11 @@ final class WireTests: XCTestCase {
             XCTAssertEqual(WirePattern.byRegex(regex)?.name, name)
             // ECMA-262's final $ is \z in ICU.
             let re = try NSRegularExpression(pattern: String(regex.dropLast()) + #"\z"#)
+            // A calendar pattern's regex checks the shape; the day is checked apart.
+            let calendar = k["calendar"] == .bool(true)
+            XCTAssertEqual(p.calendar, calendar, "\(name): calendar differs from core's")
             func matches(_ s: String) -> Bool {
-                re.firstMatch(in: s, range: NSRange(s.startIndex..., in: s)) != nil
+                re.firstMatch(in: s, range: NSRange(s.startIndex..., in: s)) != nil && (!calendar || WirePattern.realDate(s))
             }
             for s in strings(k["accept"]) {
                 XCTAssertTrue(p.check(s), "\(name): the tree rejects \(s.debugDescription), core accepts it")
@@ -108,7 +111,9 @@ final class WireTests: XCTestCase {
         XCTAssertEqual(t.timeIntervalSince1970, 1_795_721_400)
         XCTAssertEqual(try r.instant(.string("2026-11-26T14:30:00-05:00"), "t"), t)
         XCTAssertEqual(WireInstant.format(t), "2026-11-26T19:30:00Z")
-        XCTAssertEqual(WireInstant.format(try r.instant(.string("2026-02-30T00:00:00Z"), "t")), "2026-03-02T00:00:00Z")
+        XCTAssertThrowsError(try r.instant(.string("2026-02-30T00:00:00Z"), "t"))
+        XCTAssertThrowsError(try r.instant(.string("2026-02-29T00:00:00Z"), "t"))
+        XCTAssertEqual(WireInstant.format(try r.instant(.string("2028-02-29T00:00:00Z"), "t")), "2028-02-29T00:00:00Z")
         XCTAssertEqual(WireInstant.format(Date(timeIntervalSince1970: -1)), "1969-12-31T23:59:59Z")
         XCTAssertEqual(WireInstant.format(Date(timeIntervalSince1970: -62_135_596_800)), "0001-01-01T00:00:00Z")
         XCTAssertThrowsError(try r.instant(.string("2026-11-26T19:30:00.5Z"), "t"))

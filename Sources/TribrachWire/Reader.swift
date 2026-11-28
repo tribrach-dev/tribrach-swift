@@ -127,8 +127,8 @@ public struct WireReader: Sendable {
         return n
     }
 
-    /// An RFC 3339 instant to the second, at any offset. Days past the end of
-    /// a month roll over, as in core: 2026-02-30 is 2 March.
+    /// An RFC 3339 instant to the second, at any offset. As in core, the day
+    /// must exist: 2026-02-30 and 2026-02-29 are errors.
     public func instant(_ v: WireValue, _ path: String) throws -> Date {
         guard case let .string(s) = v, WirePattern.instant.check(s) else {
             throw fail(path, "want an RFC 3339 instant to the second")

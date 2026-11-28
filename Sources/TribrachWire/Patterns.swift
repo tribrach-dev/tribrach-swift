@@ -8,9 +8,31 @@ public struct WirePattern: Sendable {
     public let name: String
     public let regex: String
     public let tree: WireTree
+    /// The YYYY-MM-DD the string starts with must be a day that exists,
+    /// which no tree or regex says (core's Pat.calendar).
+    public let calendar: Bool
 
     /// Whether `s` matches the pattern.
-    public func check(_ s: String) -> Bool { tree.matches(s) }
+    public func check(_ s: String) -> Bool { tree.matches(s) && (!calendar || WirePattern.realDate(s)) }
+
+    /// Whether the YYYY-MM-DD at the start of `s` is a day that exists in the
+    /// proleptic Gregorian calendar.
+    public static func realDate(_ s: String) -> Bool {
+        let u = Array(s.utf8)
+        guard u.count >= 10, u[4] == UInt8(ascii: "-"), u[7] == UInt8(ascii: "-") else { return false }
+        func num(_ a: Int, _ b: Int) -> Int? {
+            var n = 0
+            for c in u[a..<b] {
+                guard c >= 48, c <= 57 else { return nil }
+                n = n * 10 + Int(c - 48)
+            }
+            return n
+        }
+        guard let y = num(0, 4), let m = num(5, 7), let d = num(8, 10), (1...12).contains(m), d >= 1 else { return false }
+        let leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0
+        let days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1]
+        return d <= days
+    }
 
     /// The patterns this version knows, read from core's
     /// tests/conformance/patterns.json (embedded in PatternsData.swift).
@@ -30,7 +52,7 @@ public struct WirePattern: Sendable {
             guard case let .object(k) = c, case let .string(name)? = k["name"], case let .string(regex)? = k["regex"],
                   let tree = k["tree"]
             else { throw WireTree.Malformed(description: "a case without name, regex or tree") }
-            return WirePattern(name: name, regex: regex, tree: try WireTree(json: tree))
+            return WirePattern(name: name, regex: regex, tree: try WireTree(json: tree), calendar: k["calendar"] == .bool(true))
         }
     }
 
