@@ -13,6 +13,10 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      - name: Embedded patterns match core's
+        run: |
+          Scripts/embed-patterns.sh
+          git diff --exit-code -- Sources/TribrachWire/PatternsData.swift || { echo "TRS0403 PatternsData.swift is out of date with Tests/TribrachCoreTests/core/patterns.json; fix: Scripts/embed-patterns.sh"; exit 1; }
       - name: Build and test
         run: |
           swift build

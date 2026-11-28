@@ -1,0 +1,1128 @@
+{
+  "format": "tribrach.conformance.wire.v1",
+  "about": "How each wire primitive reads and writes JSON (Tribrach.Wire). Each case has a JSON Schema as core exports it, an input as JSON text, and either output, the JSON the codec writes after reading the input, or error: true when reading fails. Instruments parse the input with their own JSON parser, read it as the schema says, write it back and compare with output by the JSON equality of replay.json. Reading fails on text that isn't one JSON value (trailing data, a trailing comma, NaN) and on an object with a duplicated key. Whole numbers may be written 2.0 or 1e2 and are written back plainly; instants are written back in UTC, and an instant whose day doesn't exist in its month (30 February, 29 February outside leap years) fails. Cases stay within signed 64-bit integers.",
+  "cases": [
+    { "id": "bool.true", "schema": { "type": "boolean" }, "input": "true", "output": true },
+    { "id": "bool.false", "schema": { "type": "boolean" }, "input": "false", "output": false },
+    { "id": "bool.string", "schema": { "type": "boolean" }, "input": "\"true\"", "error": true },
+    { "id": "bool.number", "schema": { "type": "boolean" }, "input": "1", "error": true },
+    { "id": "bool.null", "schema": { "type": "boolean" }, "input": "null", "error": true },
+    { "id": "int.zero", "schema": { "type": "integer" }, "input": "0", "output": 0 },
+    { "id": "int.negative", "schema": { "type": "integer" }, "input": "-12", "output": -12 },
+    { "id": "int.whole-fraction", "schema": { "type": "integer" }, "input": "2.0", "output": 2 },
+    { "id": "int.exponent", "schema": { "type": "integer" }, "input": "1e2", "output": 100 },
+    { "id": "int.negative-zero", "schema": { "type": "integer" }, "input": "-0", "output": 0 },
+    { "id": "int.fraction", "schema": { "type": "integer" }, "input": "2.5", "error": true },
+    {
+      "id": "int.small-exponent",
+      "schema": { "type": "integer" },
+      "input": "25e-1",
+      "error": true
+    },
+    {
+      "id": "int.int64-max",
+      "schema": { "type": "integer" },
+      "input": "9223372036854775807",
+      "output": 9223372036854775807
+    },
+    {
+      "id": "int.int64-min",
+      "schema": { "type": "integer" },
+      "input": "-9223372036854775808",
+      "output": -9223372036854775808
+    },
+    {
+      "id": "int.beyond-double",
+      "schema": { "type": "integer" },
+      "input": "9007199254740993",
+      "output": 9007199254740993
+    },
+    { "id": "int.string", "schema": { "type": "integer" }, "input": "\"1\"", "error": true },
+    { "id": "int.bool", "schema": { "type": "integer" }, "input": "true", "error": true },
+    { "id": "int.null", "schema": { "type": "integer" }, "input": "null", "error": true },
+    {
+      "id": "int-bounded.min",
+      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "input": "0",
+      "output": 0
+    },
+    {
+      "id": "int-bounded.max",
+      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "input": "9",
+      "output": 9
+    },
+    {
+      "id": "int-bounded.below",
+      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "input": "-1",
+      "error": true
+    },
+    {
+      "id": "int-bounded.above",
+      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "input": "10",
+      "error": true
+    },
+    {
+      "id": "int-bounded.max-as-fraction",
+      "schema": { "type": "integer", "minimum": 0, "maximum": 9 },
+      "input": "9.0",
+      "output": 9
+    },
+    {
+      "id": "int-multiple.multiple",
+      "schema": { "type": "integer", "multipleOf": 15 },
+      "input": "45",
+      "output": 45
+    },
+    {
+      "id": "int-multiple.zero",
+      "schema": { "type": "integer", "multipleOf": 15 },
+      "input": "0",
+      "output": 0
+    },
+    {
+      "id": "int-multiple.negative-multiple",
+      "schema": { "type": "integer", "multipleOf": 15 },
+      "input": "-30",
+      "output": -30
+    },
+    {
+      "id": "int-multiple.not-multiple",
+      "schema": { "type": "integer", "multipleOf": 15 },
+      "input": "50",
+      "error": true
+    },
+    { "id": "str.empty", "schema": { "type": "string" }, "input": "\"\"", "output": "" },
+    {
+      "id": "str.plain",
+      "schema": { "type": "string" },
+      "input": "\"hello\"",
+      "output": "hello"
+    },
+    {
+      "id": "str.escapes",
+      "schema": { "type": "string" },
+      "input": "\"a\\\"b\\\\c\\n\"",
+      "output": "a\"b\\c\n"
+    },
+    {
+      "id": "str.unicode-escape",
+      "schema": { "type": "string" },
+      "input": "\"\\u00e9\"",
+      "output": "é"
+    },
+    {
+      "id": "str.surrogate-pair",
+      "schema": { "type": "string" },
+      "input": "\"\\ud83d\\ude00\"",
+      "output": "😀"
+    },
+    { "id": "str.number", "schema": { "type": "string" }, "input": "1", "error": true },
+    { "id": "str.null", "schema": { "type": "string" }, "input": "null", "error": true },
+    {
+      "id": "str-length.empty",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"\"",
+      "error": true
+    },
+    {
+      "id": "str-length.one",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"a\"",
+      "output": "a"
+    },
+    {
+      "id": "str-length.three",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"abc\"",
+      "output": "abc"
+    },
+    {
+      "id": "str-length.four",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"abcd\"",
+      "error": true
+    },
+    {
+      "id": "str-length.accents-count-once",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"éé\"",
+      "output": "éé"
+    },
+    {
+      "id": "str-length.emoji-count-once",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"😀😀😀\"",
+      "output": "😀😀😀"
+    },
+    {
+      "id": "str-length.four-emoji",
+      "schema": { "type": "string", "minLength": 1, "maxLength": 3 },
+      "input": "\"😀😀😀😀\"",
+      "error": true
+    },
+    {
+      "id": "str-pattern.ok",
+      "schema": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "input": "\"a-b\"",
+      "output": "a-b"
+    },
+    {
+      "id": "str-pattern.leading-dash",
+      "schema": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "input": "\"-a\"",
+      "error": true
+    },
+    {
+      "id": "str-pattern.upper",
+      "schema": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "input": "\"A\"",
+      "error": true
+    },
+    { "id": "const.same", "schema": { "const": "v1" }, "input": "\"v1\"", "output": "v1" },
+    { "id": "const.other", "schema": { "const": "v1" }, "input": "\"v2\"", "error": true },
+    {
+      "id": "enum.red",
+      "schema": { "enum": ["red", "green"] },
+      "input": "\"red\"",
+      "output": "red"
+    },
+    {
+      "id": "enum.green",
+      "schema": { "enum": ["red", "green"] },
+      "input": "\"green\"",
+      "output": "green"
+    },
+    {
+      "id": "enum.unknown",
+      "schema": { "enum": ["red", "green"] },
+      "input": "\"blue\"",
+      "error": true
+    },
+    {
+      "id": "enum.case-differs",
+      "schema": { "enum": ["red", "green"] },
+      "input": "\"Red\"",
+      "error": true
+    },
+    { "id": "enum.number", "schema": { "enum": ["red", "green"] }, "input": "0", "error": true },
+    {
+      "id": "decimal.zero",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"0\"",
+      "output": "0"
+    },
+    {
+      "id": "decimal.negative",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"-12\"",
+      "output": "-12"
+    },
+    {
+      "id": "decimal.beyond-double",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"9007199254740993\"",
+      "output": "9007199254740993"
+    },
+    {
+      "id": "decimal.int64-max",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"9223372036854775807\"",
+      "output": "9223372036854775807"
+    },
+    {
+      "id": "decimal.negative-zero",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"-0\"",
+      "error": true
+    },
+    {
+      "id": "decimal.leading-zero",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"007\"",
+      "error": true
+    },
+    {
+      "id": "decimal.plus",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"+5\"",
+      "error": true
+    },
+    {
+      "id": "decimal.underscore",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"1_000\"",
+      "error": true
+    },
+    {
+      "id": "decimal.fraction",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"3.0\"",
+      "error": true
+    },
+    {
+      "id": "decimal.exponent",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"1e3\"",
+      "error": true
+    },
+    {
+      "id": "decimal.space",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\" 5\"",
+      "error": true
+    },
+    {
+      "id": "decimal.number",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "5",
+      "error": true
+    },
+    {
+      "id": "decimal.empty",
+      "schema": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$" },
+      "input": "\"\"",
+      "error": true
+    },
+    {
+      "id": "decimal-bounded.min",
+      "schema": {
+        "type": "string",
+        "pattern": "^(0|-?[1-9][0-9]*)$",
+        "x-tribrach": { "minimum": 1, "maximum": 20000 }
+      },
+      "input": "\"1\"",
+      "output": "1"
+    },
+    {
+      "id": "decimal-bounded.max",
+      "schema": {
+        "type": "string",
+        "pattern": "^(0|-?[1-9][0-9]*)$",
+        "x-tribrach": { "minimum": 1, "maximum": 20000 }
+      },
+      "input": "\"20000\"",
+      "output": "20000"
+    },
+    {
+      "id": "decimal-bounded.below",
+      "schema": {
+        "type": "string",
+        "pattern": "^(0|-?[1-9][0-9]*)$",
+        "x-tribrach": { "minimum": 1, "maximum": 20000 }
+      },
+      "input": "\"0\"",
+      "error": true
+    },
+    {
+      "id": "decimal-bounded.above",
+      "schema": {
+        "type": "string",
+        "pattern": "^(0|-?[1-9][0-9]*)$",
+        "x-tribrach": { "minimum": 1, "maximum": 20000 }
+      },
+      "input": "\"20001\"",
+      "error": true
+    },
+    {
+      "id": "instant.utc",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26T19:29:22Z\"",
+      "output": "2026-11-26T19:29:22Z"
+    },
+    {
+      "id": "instant.west",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26T11:29:22-08:00\"",
+      "output": "2026-11-26T19:29:22Z"
+    },
+    {
+      "id": "instant.east-half-hour",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-27T00:59:22+05:30\"",
+      "output": "2026-11-26T19:29:22Z"
+    },
+    {
+      "id": "instant.zero-offset",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26T19:29:22+00:00\"",
+      "output": "2026-11-26T19:29:22Z"
+    },
+    {
+      "id": "instant.leap-day",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2028-02-29T12:00:00Z\"",
+      "output": "2028-02-29T12:00:00Z"
+    },
+    {
+      "id": "instant.leap-century",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2000-02-29T00:00:00Z\"",
+      "output": "2000-02-29T00:00:00Z"
+    },
+    {
+      "id": "instant.february-30",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-02-30T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.not-a-leap-year",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-02-29T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.century-not-leap",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"1900-02-29T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.april-31",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-04-31T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.day-00",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-00T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.month-end-west",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-04-30T23:30:00-08:00\"",
+      "output": "2026-05-01T07:30:00Z"
+    },
+    {
+      "id": "instant.year-one",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"0001-01-01T00:00:00Z\"",
+      "output": "0001-01-01T00:00:00Z"
+    },
+    {
+      "id": "instant.year-9999",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"9999-12-31T23:59:59Z\"",
+      "output": "9999-12-31T23:59:59Z"
+    },
+    {
+      "id": "instant.before-1970",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"1969-12-31T23:59:59Z\"",
+      "output": "1969-12-31T23:59:59Z"
+    },
+    {
+      "id": "instant.fraction",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26T19:29:22.5Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.lowercase",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26t19:29:22z\"",
+      "error": true
+    },
+    {
+      "id": "instant.hour-24",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26T24:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.second-60",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-12-31T23:59:60Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.month-13",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-13-01T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.day-32",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-01-32T00:00:00Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.no-offset",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26T19:29:22\"",
+      "error": true
+    },
+    {
+      "id": "instant.space",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "\"2026-11-26 19:29:22Z\"",
+      "error": true
+    },
+    {
+      "id": "instant.number",
+      "schema": {
+        "format": "date-time",
+        "type": "string",
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+      },
+      "input": "1795721362",
+      "error": true
+    },
+    {
+      "id": "array.one",
+      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "input": "[1]",
+      "output": [1]
+    },
+    {
+      "id": "array.two",
+      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "input": "[1, 2.0]",
+      "output": [1, 2]
+    },
+    {
+      "id": "array.empty",
+      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "input": "[]",
+      "error": true
+    },
+    {
+      "id": "array.three",
+      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "input": "[1, 2, 3]",
+      "error": true
+    },
+    {
+      "id": "array.wrong-item",
+      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "input": "[1, \"2\"]",
+      "error": true
+    },
+    {
+      "id": "array.not-array",
+      "schema": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "integer" } },
+      "input": "1",
+      "error": true
+    },
+    {
+      "id": "object.required-only",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1}",
+      "output": { "x": 1 }
+    },
+    {
+      "id": "object.with-optional",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1, \"label\": \"a\"}",
+      "output": { "label": "a", "x": 1 }
+    },
+    {
+      "id": "object.key-order",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"label\": \"a\", \"x\": 1}",
+      "output": { "label": "a", "x": 1 }
+    },
+    {
+      "id": "object.whole-fraction",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 3.0}",
+      "output": { "x": 3 }
+    },
+    {
+      "id": "object.missing-required",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"label\": \"a\"}",
+      "error": true
+    },
+    {
+      "id": "object.unknown-key",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1, \"y\": 2}",
+      "error": true
+    },
+    {
+      "id": "object.null-is-not-absent",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1, \"label\": null}",
+      "error": true
+    },
+    {
+      "id": "object.field-out-of-range",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 10}",
+      "error": true
+    },
+    {
+      "id": "object.duplicate-key",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1, \"x\": 2}",
+      "error": true
+    },
+    {
+      "id": "object.array",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "[]",
+      "error": true
+    },
+    {
+      "id": "object.null",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "null",
+      "error": true
+    },
+    {
+      "id": "tagged.unit-case",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"kind\": \"dot\"}",
+      "output": { "kind": "dot" }
+    },
+    {
+      "id": "tagged.fields-case",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"kind\": \"box\", \"w\": 2.0}",
+      "output": { "kind": "box", "w": 2 }
+    },
+    {
+      "id": "tagged.missing-field",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"kind\": \"box\"}",
+      "error": true
+    },
+    {
+      "id": "tagged.extra-field",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"kind\": \"dot\", \"w\": 2}",
+      "error": true
+    },
+    {
+      "id": "tagged.unknown-case",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"kind\": \"ring\"}",
+      "error": true
+    },
+    {
+      "id": "tagged.no-tag",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"w\": 2}",
+      "error": true
+    },
+    {
+      "id": "tagged.tag-not-string",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": { "kind": { "const": "dot" } }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "w"],
+            "properties": { "kind": { "const": "box" }, "w": { "type": "integer" } }
+          }
+        ]
+      },
+      "input": "{\"kind\": 1}",
+      "error": true
+    },
+    {
+      "id": "nested.canonical",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount", "at"],
+        "properties": {
+          "amount": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$", "x-tribrach": { "minimum": 1 } },
+          "at": {
+            "format": "date-time",
+            "type": "string",
+            "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+          },
+          "note": { "type": "string", "maxLength": 3 }
+        }
+      },
+      "input": "{\"amount\": \"500\", \"at\": \"2026-11-26T19:29:22Z\"}",
+      "output": { "amount": "500", "at": "2026-11-26T19:29:22Z" }
+    },
+    {
+      "id": "nested.rewritten",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount", "at"],
+        "properties": {
+          "amount": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$", "x-tribrach": { "minimum": 1 } },
+          "at": {
+            "format": "date-time",
+            "type": "string",
+            "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+          },
+          "note": { "type": "string", "maxLength": 3 }
+        }
+      },
+      "input": "{\"at\": \"2026-11-26T11:29:22-08:00\", \"amount\": \"500\", \"note\": \"ok\"}",
+      "output": { "amount": "500", "at": "2026-11-26T19:29:22Z", "note": "ok" }
+    },
+    {
+      "id": "nested.amount-as-number",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount", "at"],
+        "properties": {
+          "amount": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$", "x-tribrach": { "minimum": 1 } },
+          "at": {
+            "format": "date-time",
+            "type": "string",
+            "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+          },
+          "note": { "type": "string", "maxLength": 3 }
+        }
+      },
+      "input": "{\"amount\": 500, \"at\": \"2026-11-26T19:29:22Z\"}",
+      "error": true
+    },
+    {
+      "id": "nested.bad-instant",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount", "at"],
+        "properties": {
+          "amount": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$", "x-tribrach": { "minimum": 1 } },
+          "at": {
+            "format": "date-time",
+            "type": "string",
+            "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+          },
+          "note": { "type": "string", "maxLength": 3 }
+        }
+      },
+      "input": "{\"amount\": \"500\", \"at\": \"2026-11-26T19:29:22.5Z\"}",
+      "error": true
+    },
+    {
+      "id": "nested.note-too-long",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["amount", "at"],
+        "properties": {
+          "amount": { "type": "string", "pattern": "^(0|-?[1-9][0-9]*)$", "x-tribrach": { "minimum": 1 } },
+          "at": {
+            "format": "date-time",
+            "type": "string",
+            "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
+          },
+          "note": { "type": "string", "maxLength": 3 }
+        }
+      },
+      "input": "{\"amount\": \"500\", \"at\": \"2026-11-26T19:29:22Z\", \"note\": \"long\"}",
+      "error": true
+    },
+    {
+      "id": "text.whitespace",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": " \n\u0009{ \"x\" : 1 } \n",
+      "output": { "x": 1 }
+    },
+    {
+      "id": "text.trailing-comma",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1,}",
+      "error": true
+    },
+    {
+      "id": "text.trailing-data",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1} {}",
+      "error": true
+    },
+    {
+      "id": "text.single-quotes",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{'x': 1}",
+      "error": true
+    },
+    {
+      "id": "text.empty",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "",
+      "error": true
+    },
+    {
+      "id": "text.leading-plus",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": +1}",
+      "error": true
+    },
+    {
+      "id": "text.leading-zero",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 01}",
+      "error": true
+    },
+    {
+      "id": "text.bare-dot",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": 1.}",
+      "error": true
+    },
+    {
+      "id": "text.nan",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["x"],
+        "properties": {
+          "label": { "type": "string" },
+          "x": { "type": "integer", "minimum": 0, "maximum": 9 }
+        }
+      },
+      "input": "{\"x\": NaN}",
+      "error": true
+    }
+  ]
+}

@@ -576,7 +576,7 @@
         "sessionId": "s-1001",
         "startsAt": "2026-11-26T19:30:00Z"
       },
-      "accept": true
+      "accept": false
     },
     {
       "doc": {
@@ -1446,7 +1446,7 @@
         "sessionId": "s-1001",
         "startsAt": "2026-02-30T00:00:00Z"
       },
-      "accept": true
+      "accept": false
     },
     {
       "doc": {
@@ -2228,7 +2228,7 @@
         "sessionId": "s-1001",
         "startsAt": "2026-11-26T19:30:00Z"
       },
-      "accept": true
+      "accept": false
     },
     {
       "doc": {
@@ -3098,7 +3098,7 @@
         "sessionId": "s-1001",
         "startsAt": "2026-02-30T00:00:00Z"
       },
-      "accept": true
+      "accept": false
     },
     {
       "doc": {
